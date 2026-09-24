@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru"
+      data-title-ru="AlarmStreak — будильник с миссией"
+      data-title-en="AlarmStreak — the alarm with a mission">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AlarmStreak — будильник с миссией</title>
+  <meta name="description" content="AlarmStreak — будильник для iPhone, который засчитывает утро только после миссии: приседания перед камерой, пример или фото предмета. The iPhone alarm that counts your morning only after a mission.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AlarmStreak">
+  <meta property="og:description" content="Будильник, который засчитывает утро только после миссии. The alarm that counts your morning only after a mission.">
+  <meta property="og:image" content="https://ormakhanov.github.io/alarmstreak/assets/icon.png">
+  <meta property="og:url" content="https://ormakhanov.github.io/alarmstreak/">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/lang.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="./">
+        <img src="assets/favicon.png" alt="" width="28" height="28">
+        AlarmStreak
+      </a>
+      <div class="lang-switch" role="group" aria-label="Язык / Language">
+        <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <img class="hero__icon" src="assets/icon.png" alt="" width="96" height="96">
+        <h1>AlarmStreak</h1>
+
+        <p class="hero__lead i18n" lang="ru">Будильник, который засчитывает утро <em>только после миссии</em></p>
+        <p class="hero__lead i18n" lang="en">The alarm that counts your morning <em>only after a mission</em></p>
+
+        <p class="hero__text i18n" lang="ru">Сделайте 10 приседаний перед камерой, решите пример или сфотографируйте нужный предмет — и утро засчитано. Каждое такое утро продлевает серию, а подъём становится привычкой.</p>
+        <p class="hero__text i18n" lang="en">Do 10 squats in front of the camera, solve a math problem or snap a photo of a given object — and your morning counts. Every counted morning extends your streak until getting up becomes a habit.</p>
+
+        <p class="soon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span class="i18n" lang="ru">Скоро в App Store</span>
+          <span class="i18n" lang="en">Coming soon to the App Store</span>
+        </p>
+      </div>
+
+      <figure class="streak">
+        <p class="streak__label">
+          <span class="i18n" lang="ru">Серия</span>
+          <span class="i18n" lang="en">Streak</span>
+        </p>
+        <div class="streak__value">
+          <span class="streak__number">12</span>
+          <span class="streak__unit i18n" lang="ru">утр подряд</span>
+          <span class="streak__unit i18n" lang="en">mornings in a row</span>
+        </div>
+        <ol class="streak__week" aria-hidden="true">
+          <li class="streak__day"><span class="streak__cell"></span><span class="i18n" lang="ru">Пн</span><span class="i18n" lang="en">M</span></li>
+          <li class="streak__day"><span class="streak__cell"></span><span class="i18n" lang="ru">Вт</span><span class="i18n" lang="en">T</span></li>
+          <li class="streak__day"><span class="streak__cell"></span><span class="i18n" lang="ru">Ср</span><span class="i18n" lang="en">W</span></li>
+          <li class="streak__day"><span class="streak__cell"></span><span class="i18n" lang="ru">Чт</span><span class="i18n" lang="en">T</span></li>
+          <li class="streak__day"><span class="streak__cell"></span><span class="i18n" lang="ru">Пт</span><span class="i18n" lang="en">F</span></li>
+          <li class="streak__day"><span class="streak__cell streak__cell--pause"></span><span class="i18n" lang="ru">Сб</span><span class="i18n" lang="en">S</span></li>
+          <li class="streak__day"><span class="streak__cell streak__cell--today"></span><span class="i18n" lang="ru">Вс</span><span class="i18n" lang="en">S</span></li>
+        </ol>
+        <figcaption class="streak__note">
+          <span class="i18n" lang="ru">Пример экрана: пять утр засчитаны, суббота на паузе и серию не прерывает, воскресное утро впереди.</span>
+          <span class="i18n" lang="en">Example: five mornings counted, Saturday paused without breaking the streak, Sunday morning still ahead.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="features" aria-label="Возможности / Features">
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>
+        </div>
+        <h2 class="i18n" lang="ru">Себя не обмануть</h2>
+        <h2 class="i18n" lang="en">No cheating yourself</h2>
+        <p class="i18n" lang="ru">Сигнал выключить можно, но утро засчитается только после миссии. Приседания считает камера, пример нужно решить, предмет — найти.</p>
+        <p class="i18n" lang="en">You can silence the alarm, but the morning only counts after the mission. The camera counts your squats, the math has to be solved, the object has to be found.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg>
+        </div>
+        <h2 class="i18n" lang="ru">Серия утр</h2>
+        <h2 class="i18n" lang="en">A streak of mornings</h2>
+        <p class="i18n" lang="ru">Каждое засчитанное утро продлевает серию. На отпуск или болезнь её можно поставить на паузу, а после сбоя телефона — восстановить раз в 30 дней.</p>
+        <p class="i18n" lang="en">Every counted morning extends your streak. Pause it for a vacation or a sick day, and restore it once every 30 days if your phone lets you down.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg>
+        </div>
+        <h2 class="i18n" lang="ru">Звучит даже в беззвучном</h2>
+        <h2 class="i18n" lang="en">Rings even on silent</h2>
+        <p class="i18n" lang="ru">Будильник работает через системный AlarmKit: сигнал звучит в беззвучном режиме и при включённом «Не беспокоить».</p>
+        <p class="i18n" lang="en">Built on the system AlarmKit, so the alarm rings in silent mode and with Do Not Disturb turned on.</p>
+      </article>
+
+      <article class="feature">
+        <div class="feature__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
+        </div>
+        <h2 class="i18n" lang="ru">Камера — только на телефоне</h2>
+        <h2 class="i18n" lang="en">The camera stays on your phone</h2>
+        <p class="i18n" lang="ru">Видео и снимки обрабатываются на устройстве в реальном времени и никуда не отправляются. Ни регистрации, ни аналитики.</p>
+        <p class="i18n" lang="en">Video and photos are processed on your device in real time and never leave it. No sign-up, no analytics.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p>
+        © 2026 AlarmStreak ·
+        <span class="i18n" lang="ru">Связь: <mark class="todo">{КОНТАКТНЫЙ EMAIL}</mark></span>
+        <span class="i18n" lang="en">Contact: <mark class="todo">{CONTACT EMAIL}</mark></span>
+      </p>
+      <nav aria-label="Документы / Documents">
+        <a href="privacy/"><span class="i18n" lang="ru">Политика конфиденциальности</span><span class="i18n" lang="en">Privacy Policy</span></a>
+        <a href="terms/"><span class="i18n" lang="ru">Условия использования</span><span class="i18n" lang="en">Terms of Use</span></a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
