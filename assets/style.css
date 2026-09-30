@@ -72,15 +72,6 @@ img {
   display: block;
 }
 
-/* ── Языки ─────────────────────────────────────────────────────────────
-   Текст на обоих языках лежит в разметке. Без JavaScript `data-lang` не
-   выставлен, и показывается русский — язык исходных документов. */
-
-html:not([data-lang="en"]) .i18n[lang="en"],
-html[data-lang="en"] .i18n[lang="ru"] {
-  display: none !important;
-}
-
 /* ── Шапка ─────────────────────────────────────────────────────────── */
 
 .topbar {
@@ -123,33 +114,68 @@ html[data-lang="en"] .i18n[lang="ru"] {
   box-shadow: 0 0 0 1px var(--raised);
 }
 
-.lang-switch {
-  display: inline-flex;
-  padding: 2px;
-  background: var(--card);
-  border-radius: 9px;
+/* Меню языков — <details> со ссылками: открывается и работает без
+   JavaScript. У каждого языка своя страница (Tools/Site/build.py). */
+.lang-menu {
+  position: relative;
 }
 
-.lang-switch button {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: var(--text-secondary);
-  font: 600 13px/1 var(--font);
-  letter-spacing: 0.02em;
+.lang-menu summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 7px 11px;
-  border-radius: 7px;
+  background: var(--card);
+  border-radius: 9px;
+  color: var(--text);
+  font: 600 13px/1 var(--font);
   cursor: pointer;
 }
 
-.lang-switch button[aria-pressed="true"] {
-  background: var(--raised);
-  color: var(--text);
+.lang-menu summary::-webkit-details-marker {
+  display: none;
 }
 
-/* Без JavaScript переключатель не работает — не показываем его. */
-html:not([data-lang]) .lang-switch {
-  display: none;
+.lang-menu summary svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: var(--text-secondary);
+  stroke-width: 1.6;
+}
+
+.lang-menu ul {
+  position: absolute;
+  inset-inline-end: 0;
+  top: calc(100% + 6px);
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  min-width: 190px;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  background: var(--card);
+  border: 1px solid var(--raised);
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
+}
+
+.lang-menu a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.lang-menu a:hover {
+  background: var(--raised);
+  text-decoration: none;
+}
+
+.lang-menu a[aria-current="page"] {
+  color: var(--accent);
 }
 
 /* ── Главная: hero ─────────────────────────────────────────────────── */
@@ -428,7 +454,7 @@ html:not([data-lang]) .lang-switch {
 
 .doc ul,
 .doc ol {
-  padding-left: 1.3em;
+  padding-inline-start: 1.3em;
 }
 
 .doc li {
@@ -456,7 +482,7 @@ html:not([data-lang]) .lang-switch {
 
 .callout {
   background: var(--card);
-  border-left: 3px solid var(--accent);
+  border-inline-start: 3px solid var(--accent);
   border-radius: 12px;
   padding: 16px 18px;
   margin: 0 0 14px;
@@ -482,7 +508,7 @@ html:not([data-lang]) .lang-switch {
 
 .doc th,
 .doc td {
-  text-align: left;
+  text-align: start;
   vertical-align: top;
   padding: 12px 14px;
   border-bottom: 1px solid var(--raised);
@@ -561,22 +587,58 @@ mark.todo {
 
 /* ── 404 ───────────────────────────────────────────────────────────── */
 
-.notfound {
-  max-width: var(--measure);
+/* Пометка в переводах документов: юридическую силу имеют русский и
+   английский тексты. */
+.doc__note {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* Выбор языка: страницы-переадресации без JavaScript и страница 404. */
+.picker {
+  max-width: 420px;
   margin: 0 auto;
-  padding: 96px var(--gutter);
+  padding: 72px var(--gutter);
   text-align: center;
 }
 
-.notfound h1 {
-  font-size: 64px;
-  margin: 0 0 8px;
-  color: var(--accent);
+.picker img {
+  margin: 0 auto 20px;
+  border-radius: var(--radius-icon);
 }
 
-.notfound p {
+.picker h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+}
+
+.picker p {
   color: var(--text-secondary);
   margin: 0 0 20px;
+}
+
+.picker__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.picker__list a {
+  display: block;
+  padding: 12px 16px;
+  background: var(--card);
+  border-radius: 12px;
+  color: var(--text);
+}
+
+.picker__list a:hover {
+  background: var(--raised);
+  text-decoration: none;
 }
 
 /* На узком экране три колонки не помещаются: строка таблицы становится

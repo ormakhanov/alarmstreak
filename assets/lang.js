@@ -1,30 +1,44 @@
 /*
-  Выбор языка страницы: ru или en.
+  Язык сайта. У каждого языка своя папка: /ru/, /en/, /zh-hans/ …
 
-  Порядок: параметр ?lang= (его передаёт приложение — язык приложения на iOS
-  может не совпадать с языком Safari) → выбор, сделанный переключателем →
-  язык браузера → английский.
+  На страницах-переадресациях (корень, /privacy/, /terms/ — у <html> есть
+  data-redirect) скрипт выбирает язык и сразу уходит на его страницу.
+  Порядок: параметр ?lang= (его передают прежние сборки приложения — язык
+  приложения на iOS может не совпадать с языком Safari) → выбор, сделанный
+  в меню языков → язык браузера → английский.
 
-  Скрипт подключается в <head> без defer: язык выставляется до первой
-  отрисовки, и страница не мигает вторым языком.
+  На страницах языков скрипт только запоминает выбор из меню. Само меню —
+  ссылки, оно работает и без JavaScript.
+
+  Страницы собирает Tools/Site/build.py; список языков здесь и там один.
 */
 (function () {
-  var root = document.documentElement;
-  var supported = { ru: true, en: true };
+  var LANGS = ["ru", "en", "kk", "zh-hans", "zh-hant", "es", "fr", "de",
+               "it", "pt-br", "tr", "ar", "ur", "hi", "bn"];
   var storageKey = "alarmstreak.lang";
 
+  function normalize(tag) {
+    tag = String(tag || "").toLowerCase().replace(/_/g, "-");
+    if (!tag) return null;
+    if (LANGS.indexOf(tag) >= 0) return tag;
+    if (tag.indexOf("zh") === 0) {
+      return /hant|-tw|-hk|-mo/.test(tag) ? "zh-hant" : "zh-hans";
+    }
+    if (tag.indexOf("pt") === 0) return "pt-br";
+    var base = tag.split("-")[0];
+    return LANGS.indexOf(base) >= 0 ? base : null;
+  }
+
   function fromQuery() {
-    var match = /[?&]lang=([a-z]{2})/i.exec(window.location.search);
-    var lang = match && match[1].toLowerCase();
-    return lang && supported[lang] ? lang : null;
+    var match = /[?&]lang=([a-z_-]+)/i.exec(window.location.search);
+    return match ? normalize(match[1]) : null;
   }
 
   // Хранилище может быть недоступно (приватный режим, запрет сайтам),
   // поэтому каждое обращение — в try/catch.
   function fromStorage() {
     try {
-      var lang = window.localStorage.getItem(storageKey);
-      return lang && supported[lang] ? lang : null;
+      return normalize(window.localStorage.getItem(storageKey));
     } catch (e) {
       return null;
     }
@@ -41,46 +55,34 @@
   function fromBrowser() {
     var list = navigator.languages || [navigator.language || ""];
     for (var i = 0; i < list.length; i++) {
-      var lang = String(list[i]).slice(0, 2).toLowerCase();
-      if (supported[lang]) return lang;
+      var lang = normalize(list[i]);
+      if (lang) return lang;
     }
     return null;
   }
 
-  function apply(lang) {
-    root.setAttribute("data-lang", lang);
-    root.setAttribute("lang", lang);
-
-    var title = root.getAttribute("data-title-" + lang);
-    if (title) document.title = title;
-
-    var buttons = document.querySelectorAll("[data-set-lang]");
-    for (var i = 0; i < buttons.length; i++) {
-      var pressed = buttons[i].getAttribute("data-set-lang") === lang;
-      buttons[i].setAttribute("aria-pressed", pressed ? "true" : "false");
-    }
+  var root = document.documentElement;
+  var page = root.getAttribute("data-redirect");
+  if (page !== null) {
+    var lang = fromQuery() || fromStorage() || fromBrowser() || "en";
+    window.location.replace((root.getAttribute("data-base") || "") + lang + "/" + page);
+    return;
   }
 
-  var current = fromQuery() || fromStorage() || fromBrowser() || "en";
-  apply(current);
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("[data-set-lang]");
+    if (link) remember(link.getAttribute("data-set-lang"));
 
-  document.addEventListener("DOMContentLoaded", function () {
-    apply(current);
+    // <details> сам не закрывается по щелчку мимо — закрываем меню здесь.
+    var menu = document.querySelector(".lang-menu[open]");
+    if (menu && !menu.contains(event.target)) menu.open = false;
+  });
 
-    var buttons = document.querySelectorAll("[data-set-lang]");
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener("click", function (event) {
-        current = event.currentTarget.getAttribute("data-set-lang");
-        remember(current);
-        apply(current);
-
-        // Параметр из адреса иначе вернул бы прежний язык при обновлении.
-        if (fromQuery() && window.history.replaceState) {
-          var url = new URL(window.location.href);
-          url.searchParams.set("lang", current);
-          window.history.replaceState(null, "", url);
-        }
-      });
+  document.addEventListener("keydown", function (event) {
+    var menu = document.querySelector(".lang-menu[open]");
+    if (menu && event.key === "Escape") {
+      menu.open = false;
+      menu.querySelector("summary").focus();
     }
   });
 })();
