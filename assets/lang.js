@@ -13,8 +13,8 @@
   Страницы собирает Tools/Site/build.py; список языков здесь и там один.
 */
 (function () {
-  var LANGS = ["ru", "en", "kk", "zh-hans", "zh-hant", "es", "fr", "de",
-               "it", "pt-br", "tr", "ar", "ur", "hi", "bn"];
+  var LANGS = ["de", "en", "es", "fr", "it", "pt-br", "tr", "kk", "ru",
+               "ur", "ar", "hi", "bn", "zh-hans", "zh-hant"];
   var storageKey = "alarmstreak.lang";
 
   function normalize(tag) {
