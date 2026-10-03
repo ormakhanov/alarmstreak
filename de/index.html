@@ -122,55 +122,97 @@
           }
         })(document);
       </script>
-      <ul class="hero__points" role="list">
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg>
+    </section>
+
+    <div class="flow">
+      <ol class="flow__steps" role="list">
+        <li class="flow__step reveal" style="--i:0">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
           <p><strong>Pünktlich aus dem Bett.</strong> Es gibt keine Schlummertaste, und du hast 15 Minuten, um die Mission zu starten.</p>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg>
+        <li class="flow__step reveal" style="--i:1">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
           <p><strong>Der Morgen beginnt mit Bewegung.</strong> Wähle Kniebeugen oder Liegestütze – die Kamera zählt alle 10 Wiederholungen für dich.</p>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg>
+        <li class="flow__step reveal" style="--i:2">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
           <p><strong>Eine Serie, die du halten willst.</strong> Jeder gezählte Morgen zählt eins dazu. Tage ohne Wecker und eine Pause für Urlaub oder Krankheit unterbrechen sie nicht.</p>
         </li>
-      </ul>
+      </ol>
+    </div>
+
+    <section class="loops" aria-labelledby="loops-title">
+      <h2 class="loops__title reveal" id="loops-title">Damit du wirklich aufstehst</h2>
+      <div class="bento">
+        <article class="tile tile--wide reveal">
+          <div class="tile__well" aria-hidden="true">
+            <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33</bdi></li></ol>
+          </div>
+          <div class="tile__body">
+            <h3>Einfach wegwischen reicht nicht</h3>
+            <p>Wischst du den Wecker weg oder schaltest ihn mit einer Lautstärketaste stumm, klingelt er nach einer Minute erneut – bis zu dreimal. Wechselst du zur Mission, schließt sie aber nicht in 5 Minuten ab, klingelt er noch einmal.</p>
+          </div>
+        </article>
+
+        <article class="tile reveal" style="--i:1">
+          <div class="tile__well" aria-hidden="true">
+            <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li></ol>
+          </div>
+          <div class="tile__body">
+            <h3>Im Halbschlaf nicht umentscheiden</h3>
+            <p>Der Wecker wird 4 Stunden vorher gesperrt. Ihn danach später zu stellen, auszuschalten, zu löschen oder die Mission zu erleichtern, kostet deine Serie. Früher aufstehen oder die Mission erschweren geht immer.</p>
+          </div>
+        </article>
+
+        <article class="tile reveal" style="--i:2">
+          <div class="tile__well" aria-hidden="true">
+            <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+          </div>
+          <div class="tile__body">
+            <h3>Klingelt auch im Stummmodus</h3>
+            <p>Vor dem Schlafen musst du weder den Ton einschalten noch die App offen lassen: Der Wecker klingelt auch im Stummmodus und bei „Nicht stören“.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="features" aria-label="Funktionen">
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg>
-        </div>
-        <h2>Einfach wegwischen reicht nicht</h2>
-        <p>Wischst du den Wecker weg oder schaltest ihn mit einer Lautstärketaste stumm, klingelt er nach einer Minute erneut – bis zu dreimal. Wechselst du zur Mission, schließt sie aber nicht in 5 Minuten ab, klingelt er noch einmal.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
-        </div>
-        <h2>Im Halbschlaf nicht umentscheiden</h2>
-        <p>Der Wecker wird 4 Stunden vorher gesperrt. Ihn danach später zu stellen, auszuschalten, zu löschen oder die Mission zu erleichtern, kostet deine Serie. Früher aufstehen oder die Mission erschweren geht immer.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg>
-        </div>
-        <h2>Klingelt auch im Stummmodus</h2>
-        <p>Vor dem Schlafen musst du weder den Ton einschalten noch die App offen lassen: Der Wecker klingelt auch im Stummmodus und bei „Nicht stören“.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
-        </div>
-        <h2>Videos bleiben auf dem Telefon</h2>
+    <section class="privacy reveal" aria-labelledby="privacy-title">
+      <span class="privacy__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
+      <div>
+        <h2 id="privacy-title">Videos bleiben auf dem Telefon</h2>
         <p>Kniebeugen, Liegestütze und der Gegenstand auf dem Foto werden direkt auf dem Telefon erkannt. Videos und Fotos werden nirgendwohin gesendet. Keine Registrierung, keine Analyse.</p>
-      </article>
+      </div>
     </section>
+
+    <section class="finale reveal" aria-labelledby="finale-title">
+      <div class="finale__mark">
+        <div class="finale__glow" aria-hidden="true"></div>
+        <img src="../assets/icon.png" alt="" width="104" height="104" loading="lazy">
+      </div>
+      <h2 id="finale-title">AlarmStreak</h2>
+      <p class="finale__lead">Ein Wecker für iPhone, der dir hilft, pünktlich aufzustehen und den Tag mit Bewegung zu beginnen. Ohne Schlummertaste.</p>
+      <p class="finale__soon">Bald im App Store</p>
+    </section>
+
+    <script>
+      (function (d) {
+        if (!d.documentElement.classList.contains("has-motion")) return;
+        var items = d.querySelectorAll(".reveal");
+        function show(el) { el.classList.add("is-in"); }
+        try {
+          var seen = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              show(e.target);
+              seen.unobserve(e.target);
+            });
+          }, { rootMargin: "0px 0px -12% 0px" });
+          Array.prototype.forEach.call(items, function (el) { seen.observe(el); });
+        } catch (err) {
+          Array.prototype.forEach.call(items, show);
+        }
+      })(document);
+    </script>
   </main>
 
   <footer class="footer">

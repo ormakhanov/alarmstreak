@@ -34,6 +34,15 @@
   --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
+/* Начало строки для transform-origin, у которого нет логических значений. */
+:root {
+  --edge-start: left;
+}
+
+[dir="rtl"] {
+  --edge-start: right;
+}
+
 *,
 *::before,
 *::after {
@@ -268,7 +277,7 @@ main {
 .hero__visual {
   position: relative;
   max-width: 400px;
-  margin: 48px auto 36px;
+  margin: 48px auto 16px;
 }
 
 /* Восход за карточкой. Плотная середина спрятана за непрозрачной карточкой,
@@ -500,72 +509,26 @@ main {
   font-size: 15px;
 }
 
-.hero__points {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 16px;
-}
-
-.hero__points li {
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr);
-  gap: 14px;
-  align-items: start;
-}
-
-.hero__points svg {
-  width: 36px;
-  height: 36px;
-  padding: 8px;
-  border-radius: 10px;
-  background: var(--card);
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.hero__points p {
-  margin: 0;
-  padding-top: 5px;
-  color: var(--text-secondary);
-  font-size: 16px;
-  line-height: 1.45;
-  text-wrap: pretty;
-}
-
-.hero__points strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
 /* Отрицательный трекинг рвёт связки арабского письма и деванагари,
    китайским иероглифам он не нужен. У высоких начертаний — больше воздуха. */
-[dir="rtl"] .hero__title,
-:lang(hi) .hero__title,
-:lang(bn) .hero__title,
-:lang(zh) .hero__title {
+[dir="rtl"] :is(.hero__title, .loops__title, .privacy h2, .finale h2),
+:lang(hi) :is(.hero__title, .loops__title, .privacy h2, .finale h2),
+:lang(bn) :is(.hero__title, .loops__title, .privacy h2, .finale h2),
+:lang(zh) :is(.hero__title, .loops__title, .privacy h2, .finale h2) {
   letter-spacing: normal;
 }
 
-[dir="rtl"] .hero__title {
+[dir="rtl"] :is(.hero__title, .loops__title, .privacy h2),
+:lang(hi) :is(.hero__title, .loops__title, .privacy h2),
+:lang(bn) :is(.hero__title, .loops__title, .privacy h2) {
   line-height: 1.3;
 }
 
-:lang(hi) .hero__title,
-:lang(bn) .hero__title {
-  line-height: 1.3;
-}
-
-:lang(ur) .hero__title {
+:lang(ur) :is(.hero__title, .loops__title, .privacy h2) {
   line-height: 1.6;
 }
 
-:lang(ur) .hero__lead,
-:lang(ur) .hero__points p {
+:lang(ur) :is(.hero__lead, .flow p, .tile p, .privacy p, .finale__lead) {
   line-height: 1.9;
 }
 
@@ -589,17 +552,16 @@ main {
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    grid-template-rows: 1fr repeat(4, auto) 1fr;
+    grid-template-rows: 1fr repeat(3, auto) 1fr;
     grid-template-areas:
-      ".      visual"
-      "title  visual"
-      "lead   visual"
-      "store  visual"
-      "points visual"
-      ".      visual";
+      ".     visual"
+      "title visual"
+      "lead  visual"
+      "store visual"
+      ".     visual";
     column-gap: 64px;
     padding-top: 88px;
-    padding-bottom: 80px;
+    padding-bottom: 96px;
   }
 
   /* Колонка текста при 880 px — около 420 px: кегль от ширины окна дал бы
@@ -616,11 +578,6 @@ main {
 
   .store {
     grid-area: store;
-  }
-
-  .hero__points {
-    grid-area: points;
-    margin-top: 40px;
   }
 
   .hero__visual {
@@ -724,8 +681,7 @@ main {
 @media screen and (prefers-reduced-motion: no-preference) {
   .hero__title,
   .hero__lead,
-  .store,
-  .hero__points li {
+  .store {
     animation: rise-in 600ms var(--ease-out) backwards;
   }
 
@@ -735,18 +691,6 @@ main {
 
   .store {
     animation-delay: 160ms;
-  }
-
-  .hero__points li:nth-child(1) {
-    animation-delay: 240ms;
-  }
-
-  .hero__points li:nth-child(2) {
-    animation-delay: 320ms;
-  }
-
-  .hero__points li:nth-child(3) {
-    animation-delay: 400ms;
   }
 
   .has-motion .hero__visual {
@@ -905,41 +849,13 @@ main {
   }
 }
 
-/* ── Главная: возможности ──────────────────────────────────────────── */
+/* ── Главная: шаги утра ────────────────────────────────────────────── */
 
-.features {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 var(--gutter) 64px;
-  display: grid;
-  gap: 12px;
-}
-
-@media (min-width: 640px) {
-  .features {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.feature {
-  background: var(--card);
-  border-radius: var(--radius-card);
-  padding: 22px;
-}
-
-.feature__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: var(--raised);
-  display: grid;
-  place-items: center;
-  margin-bottom: 14px;
-}
-
-.feature__icon svg {
-  width: 22px;
-  height: 22px;
+/* Контурные значки новых блоков рисуются так же, как в карточке. */
+.flow__node svg,
+.chip svg,
+.privacy__icon svg {
+  flex: none;
   fill: none;
   stroke: var(--accent);
   stroke-width: 2;
@@ -947,16 +863,600 @@ main {
   stroke-linejoin: round;
 }
 
-.feature h2 {
-  margin: 0 0 6px;
+/* Звонок → движение → серия. Линия ведёт от значка к значку: на телефоне
+   вниз, на широком экране вбок. */
+.flow {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 8px var(--gutter) 64px;
+}
+
+.flow__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 28px;
+}
+
+.flow__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.flow__node {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.flow__node svg {
+  width: 24px;
+  height: 24px;
+}
+
+.flow__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 23px;
+  top: 58px;
+  bottom: -18px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--separator);
+}
+
+/* Первая строка заголовка — по центру значка. */
+.flow p {
+  margin: 0;
+  padding-top: 11px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* Начало пункта — его заголовок. */
+.flow strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
   font-size: 19px;
+  font-weight: 700;
   line-height: 1.3;
 }
 
-.feature p {
+@media (min-width: 880px) {
+  .flow {
+    padding-bottom: 88px;
+  }
+
+  .flow__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 40px;
+  }
+
+  .flow__step {
+    grid-template-columns: none;
+    gap: 20px;
+  }
+
+  /* От значка (48 + 16) до следующего (колонка + 40 − 16). */
+  .flow__step:not(:last-child)::after {
+    top: 23px;
+    bottom: auto;
+    inset-inline-start: 64px;
+    inset-inline-end: -24px;
+    width: auto;
+    height: 2px;
+  }
+
+  .flow p {
+    padding-top: 0;
+  }
+}
+
+/* ── Главная: плитки ───────────────────────────────────────────────── */
+
+.loops {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.loops__title {
+  margin: 0 0 24px;
+  font-size: clamp(30px, 2.5vw + 20px, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.bento {
+  display: grid;
+  gap: 12px;
+}
+
+/* Плитка: сверху углубление со схемой — тёмное, как экран внутри
+   карточки, — под ним текст. Радиус углубления — радиус плитки минус
+   отступ, чтобы углы шли параллельно. */
+.tile {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background: var(--card);
+  border-radius: var(--radius-card);
+}
+
+.tile__well {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 168px;
+  padding: 28px 16px;
+  border-radius: 12px;
+  background: rgb(0 0 0 / 0.42);
+  overflow: hidden;
+}
+
+.tile__body {
+  padding: 18px 14px 14px;
+}
+
+.tile h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.tile p {
   margin: 0;
   color: var(--text-secondary);
   font-size: 16px;
+  text-wrap: pretty;
+}
+
+/* Время в схемах — плашки, как строки будильников в приложении. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  padding-inline-start: 10px;
+  border-radius: 12px;
+  background: var(--raised);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.chip svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Первый звонок и три повтора через минуту — столбик, связанный линией.
+   Снизу — тот же восход, что за карточкой в герое. */
+.tile--wide .tile__well {
+  background:
+    radial-gradient(70% 90% at 50% 125%, rgb(255 159 10 / 0.24), rgb(255 159 10 / 0) 70%),
+    rgb(0 0 0 / 0.42);
+}
+
+.again {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.again::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-inline-start: 19px;
+  top: 19px;
+  bottom: 19px;
+  width: 2px;
+  background: var(--separator);
+}
+
+/* Закрепление: с 2:30 до звонка в 6:30 будильник не изменить — полоса между
+   ними заштрихована, как закрытая зона. */
+.lock {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lock__bar {
+  flex: 1;
+  min-width: 20px;
+  height: 8px;
+  background: var(--raised);
+}
+
+.lock__fill {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(-45deg,
+      var(--accent) 0 5px,
+      rgb(255 159 10 / 0.4) 5px 10px);
+}
+
+/* Звонит в беззвучном: колокольчик на акцентной заливке, как кнопка
+   миссии в приложении, и круги звука вокруг. */
+.ripple {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 136px;
+  aspect-ratio: 1;
+}
+
+.ripple::before,
+.ripple::after {
+  content: "";
+  position: absolute;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+}
+
+.ripple::before {
+  inset: 22px;
+  opacity: 0.4;
+}
+
+.ripple::after {
+  inset: 0;
+  opacity: 0.16;
+}
+
+.ripple svg {
+  width: 64px;
+  height: 64px;
+  padding: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (min-width: 640px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Первая плитка — во всю ширину: текст сбоку от схемы. */
+  .tile--wide {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: "body well";
+  }
+
+  .tile--wide .tile__well {
+    grid-area: well;
+    min-height: 236px;
+  }
+
+  .tile--wide .tile__body {
+    grid-area: body;
+    align-self: center;
+    padding: 24px 28px;
+  }
+}
+
+@media (min-width: 880px) {
+  .tile--wide h3 {
+    font-size: 26px;
+    letter-spacing: -0.01em;
+  }
+
+  .tile--wide p {
+    font-size: 17px;
+  }
+}
+
+/* ── Главная: приватность и финал ──────────────────────────────────── */
+
+.privacy {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px var(--gutter);
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.privacy__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--card);
+}
+
+.privacy__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.privacy h2 {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 2vw + 20px, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.privacy p {
+  margin: 0;
+  max-width: 36em;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+@media (min-width: 640px) {
+  .privacy {
+    grid-template-columns: 56px minmax(0, 1fr);
+    column-gap: 24px;
+  }
+
+  .privacy p {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 880px) {
+  .privacy {
+    padding-block: 104px;
+  }
+}
+
+/* Иконка на том же восходе, что в герое: страница начинается и кончается
+   рассветом. Под краем иконки прозрачность ≤ 0,2 — вторичный текст рядом
+   держит контраст выше 5:1. */
+.finale {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px var(--gutter) 96px;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.finale__mark {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.finale__mark img {
+  width: 104px;
+  height: 104px;
+  border-radius: var(--radius-icon);
+  box-shadow: 0 0 0 1px var(--raised);
+}
+
+.finale__glow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 440px;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+      rgb(255 159 10 / 0.36),
+      rgb(255 159 10 / 0.2) 35%,
+      rgb(255 159 10 / 0.07) 65%,
+      rgb(255 159 10 / 0));
+  pointer-events: none;
+}
+
+.finale h2 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 2.5vw + 22px, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.finale__lead {
+  margin: 0 0 18px;
+  max-width: 30em;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+.finale__soon {
+  margin: 0;
+  font-weight: 600;
+}
+
+@media (min-width: 880px) {
+  .finale {
+    padding-bottom: 128px;
+  }
+
+  .finale__lead {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .flow__step::after,
+  .again::before {
+    background: rgb(255 255 255 / 0.36);
+  }
+}
+
+@media (forced-colors: active) {
+  .flow__node,
+  .tile,
+  .chip,
+  .privacy__icon {
+    border: 1px solid CanvasText;
+  }
+
+  .lock__fill,
+  .ripple svg {
+    background: Highlight;
+  }
+
+  .ripple svg {
+    stroke: Canvas;
+  }
+
+  .ripple::before,
+  .ripple::after {
+    border-color: Highlight;
+  }
+
+  .finale__glow {
+    display: none;
+  }
+}
+
+@media print {
+  .finale__glow {
+    display: none;
+  }
+}
+
+/* ── Главная: движение ниже героя ──────────────────────────────────── */
+
+/*
+  Блоки ниже героя всплывают, когда до них доходит прокрутка: класс is-in
+  ставит скрипт в конце main (build.py, REVEAL). Внутри плиток схема
+  проигрывает то, о чём текст: звонок повторяется, полоса закрепления
+  заполняется, колокольчик звенит. Финальный кадр — статичные стили выше,
+  как и в карточке героя.
+*/
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .has-motion .reveal {
+    transition:
+      opacity 700ms var(--ease-out) calc(var(--i, 0) * 90ms),
+      transform 700ms var(--ease-out) calc(var(--i, 0) * 90ms);
+  }
+
+  .has-motion .reveal:not(.is-in) {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  /* Линия шага дорисовывается к следующему значку. */
+  .has-motion .flow__step::after {
+    transform-origin: top;
+    transition: transform 600ms var(--ease-in-out) calc(var(--i, 0) * 90ms + 350ms);
+  }
+
+  .has-motion .flow__step:not(.is-in)::after {
+    transform: scaleY(0);
+  }
+
+  /* Звонок, затем повтор за повтором — раз в 380 мс. Линия тянется за ними. */
+  .has-motion .is-in .again .chip {
+    animation: chip-in 460ms var(--ease-spring) calc(450ms + var(--i) * 380ms) backwards;
+  }
+
+  .has-motion .is-in .again::before {
+    transform-origin: top;
+    animation: grow-y 1140ms linear 600ms backwards;
+  }
+
+  .has-motion .is-in .lock__fill {
+    animation: grow-x 1200ms var(--ease-in-out) calc(var(--i, 0) * 90ms + 500ms) backwards;
+  }
+
+  .has-motion .is-in .ripple svg {
+    animation: bell-ring 800ms cubic-bezier(0.36, 0.07, 0.19, 0.97) calc(var(--i, 0) * 90ms + 500ms) backwards;
+  }
+
+  .has-motion .is-in .ripple::before {
+    animation: ripple 1100ms var(--ease-out) calc(var(--i, 0) * 90ms + 550ms) backwards;
+  }
+
+  .has-motion .is-in .ripple::after {
+    animation: ripple 1100ms var(--ease-out) calc(var(--i, 0) * 90ms + 750ms) backwards;
+  }
+
+  .has-motion .finale.is-in .finale__glow {
+    animation: glow-rise 1600ms var(--ease-out) 150ms backwards;
+  }
+}
+
+@media screen and (min-width: 880px) and (prefers-reduced-motion: no-preference) {
+  .has-motion .flow__step::after {
+    transform-origin: var(--edge-start);
+  }
+
+  .has-motion .flow__step:not(.is-in)::after {
+    transform: scaleX(0);
+  }
+}
+
+/* Полоса закрепления заполняется от 2:30 к 6:30 — в RTL справа налево. */
+.lock__fill {
+  transform-origin: var(--edge-start);
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.92);
+  }
+}
+
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes ripple {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  35% {
+    opacity: 0.9;
+  }
 }
 
 /* ── Документы ─────────────────────────────────────────────────────── */

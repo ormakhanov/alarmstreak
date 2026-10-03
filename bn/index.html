@@ -122,55 +122,97 @@
           }
         })(document);
       </script>
-      <ul class="hero__points" role="list">
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg>
+    </section>
+
+    <div class="flow">
+      <ol class="flow__steps" role="list">
+        <li class="flow__step reveal" style="--i:0">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
           <p><strong>সময়মতো ওঠা।</strong> স্নুজ বোতাম নেই, আর মিশন শুরু করতে আপনার হাতে ১৫ মিনিট।</p>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg>
+        <li class="flow__step reveal" style="--i:1">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
           <p><strong>সকাল শুরু হয় নড়াচড়া দিয়ে।</strong> স্কোয়াট বা পুশ-আপ বেছে নিন — ১০টি পুনরাবৃত্তিই ক্যামেরা আপনার হয়ে গুনবে।</p>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg>
+        <li class="flow__step reveal" style="--i:2">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
           <p><strong>যে স্ট্রিক চালিয়ে যেতে চাইবেন।</strong> প্রতিটি গণনা হওয়া সকাল এতে একটি যোগ করে। অ্যালার্মহীন দিন আর ছুটি বা অসুস্থতার বিরতি একে ভাঙে না।</p>
         </li>
-      </ul>
+      </ol>
+    </div>
+
+    <section class="loops" aria-labelledby="loops-title">
+      <h2 class="loops__title reveal" id="loops-title">যাতে সত্যিই উঠে পড়েন</h2>
+      <div class="bento">
+        <article class="tile tile--wide reveal">
+          <div class="tile__well" aria-hidden="true">
+            <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>৬:৩০</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>৬:৩১</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>৬:৩২</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>৬:৩৩</bdi></li></ol>
+          </div>
+          <div class="tile__body">
+            <h3>শুধু সোয়াইপ করলে হবে না</h3>
+            <p>অ্যালার্ম সোয়াইপ করে বন্ধ করলে বা ভলিউম বোতামে চুপ করালে, এক মিনিট পরে সেটি আবার বাজবে, তিনবার পর্যন্ত। মিশনে গিয়ে ৫ মিনিটের মধ্যে শেষ না করলে সেটি আরও একবার বাজবে।</p>
+          </div>
+        </article>
+
+        <article class="tile reveal" style="--i:1">
+          <div class="tile__well" aria-hidden="true">
+            <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>২:৩০</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>৬:৩০</bdi></li></ol>
+          </div>
+          <div class="tile__body">
+            <h3>আধো ঘুমে মত বদলানো যাবে না</h3>
+            <p>বাজার ৪ ঘণ্টা আগে অ্যালার্ম লক হয়ে যায়। এরপর সেটি পিছিয়ে দেওয়া, বন্ধ করা, মুছে ফেলা বা মিশন সহজ করা আপনার স্ট্রিক ভেঙে দেয়। আগে ওঠা বা মিশন কঠিন করা সবসময় যায়।</p>
+          </div>
+        </article>
+
+        <article class="tile reveal" style="--i:2">
+          <div class="tile__well" aria-hidden="true">
+            <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+          </div>
+          <div class="tile__body">
+            <h3>সাইলেন্ট মোডেও বাজে</h3>
+            <p>ঘুমানোর আগে শব্দ চালু করা বা অ্যাপ খোলা রাখার দরকার নেই: ফোন সাইলেন্ট মোডে থাকলে বা “বিরক্ত করবেন না” চালু থাকলেও অ্যালার্ম বাজবে।</p>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="features" aria-label="বৈশিষ্ট্য">
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg>
-        </div>
-        <h2>শুধু সোয়াইপ করলে হবে না</h2>
-        <p>অ্যালার্ম সোয়াইপ করে বন্ধ করলে বা ভলিউম বোতামে চুপ করালে, এক মিনিট পরে সেটি আবার বাজবে, তিনবার পর্যন্ত। মিশনে গিয়ে ৫ মিনিটের মধ্যে শেষ না করলে সেটি আরও একবার বাজবে।</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
-        </div>
-        <h2>আধো ঘুমে মত বদলানো যাবে না</h2>
-        <p>বাজার ৪ ঘণ্টা আগে অ্যালার্ম লক হয়ে যায়। এরপর সেটি পিছিয়ে দেওয়া, বন্ধ করা, মুছে ফেলা বা মিশন সহজ করা আপনার স্ট্রিক ভেঙে দেয়। আগে ওঠা বা মিশন কঠিন করা সবসময় যায়।</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg>
-        </div>
-        <h2>সাইলেন্ট মোডেও বাজে</h2>
-        <p>ঘুমানোর আগে শব্দ চালু করা বা অ্যাপ খোলা রাখার দরকার নেই: ফোন সাইলেন্ট মোডে থাকলে বা “বিরক্ত করবেন না” চালু থাকলেও অ্যালার্ম বাজবে।</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
-        </div>
-        <h2>ভিডিও ফোনের বাইরে যায় না</h2>
+    <section class="privacy reveal" aria-labelledby="privacy-title">
+      <span class="privacy__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
+      <div>
+        <h2 id="privacy-title">ভিডিও ফোনের বাইরে যায় না</h2>
         <p>স্কোয়াট, পুশ-আপ আর ছবির জিনিসটি সরাসরি ফোনেই চেনা হয়। ভিডিও আর ছবি কোথাও পাঠানো হয় না। নিবন্ধন নেই, অ্যানালিটিক্স নেই।</p>
-      </article>
+      </div>
     </section>
+
+    <section class="finale reveal" aria-labelledby="finale-title">
+      <div class="finale__mark">
+        <div class="finale__glow" aria-hidden="true"></div>
+        <img src="../assets/icon.png" alt="" width="104" height="104" loading="lazy">
+      </div>
+      <h2 id="finale-title">AlarmStreak</h2>
+      <p class="finale__lead">এমন iPhone অ্যালার্ম, যা সময়মতো উঠতে আর নড়াচড়া দিয়ে দিন শুরু করতে সাহায্য করে। স্নুজ বোতাম নেই।</p>
+      <p class="finale__soon">শীঘ্রই App Store-এ</p>
+    </section>
+
+    <script>
+      (function (d) {
+        if (!d.documentElement.classList.contains("has-motion")) return;
+        var items = d.querySelectorAll(".reveal");
+        function show(el) { el.classList.add("is-in"); }
+        try {
+          var seen = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              show(e.target);
+              seen.unobserve(e.target);
+            });
+          }, { rootMargin: "0px 0px -12% 0px" });
+          Array.prototype.forEach.call(items, function (el) { seen.observe(el); });
+        } catch (err) {
+          Array.prototype.forEach.call(items, show);
+        }
+      })(document);
+    </script>
   </main>
 
   <footer class="footer">

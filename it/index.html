@@ -122,55 +122,97 @@
           }
         })(document);
       </script>
-      <ul class="hero__points" role="list">
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg>
+    </section>
+
+    <div class="flow">
+      <ol class="flow__steps" role="list">
+        <li class="flow__step reveal" style="--i:0">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
           <p><strong>In piedi in orario.</strong> Non c’è il pulsante Posponi, e hai 15 minuti per iniziare la missione.</p>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg>
+        <li class="flow__step reveal" style="--i:1">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
           <p><strong>La mattina inizia col movimento.</strong> Scegli squat o flessioni: la fotocamera conta tutte e 10 le ripetizioni per te.</p>
         </li>
-        <li>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg>
+        <li class="flow__step reveal" style="--i:2">
+          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
           <p><strong>Una serie da allungare.</strong> Ogni mattina convalidata aggiunge un giorno. I giorni senza sveglia e la pausa per vacanze o malattia non la interrompono.</p>
         </li>
-      </ul>
+      </ol>
+    </div>
+
+    <section class="loops" aria-labelledby="loops-title">
+      <h2 class="loops__title reveal" id="loops-title">Per alzarti davvero</h2>
+      <div class="bento">
+        <article class="tile tile--wide reveal">
+          <div class="tile__well" aria-hidden="true">
+            <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33</bdi></li></ol>
+          </div>
+          <div class="tile__body">
+            <h3>Non basta uno swipe</h3>
+            <p>Se scorri via la sveglia o la silenzi con un tasto del volume, suona di nuovo dopo un minuto, fino a tre volte. Se passi alla missione ma non la finisci entro 5 minuti, suona ancora una volta.</p>
+          </div>
+        </article>
+
+        <article class="tile reveal" style="--i:1">
+          <div class="tile__well" aria-hidden="true">
+            <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li></ol>
+          </div>
+          <div class="tile__body">
+            <h3>Niente ripensamenti da assonnati</h3>
+            <p>La sveglia si blocca 4 ore prima di suonare. Dopo, spostarla più tardi, spegnerla, eliminarla o rendere la missione più facile interrompe la serie. Alzarsi prima o rendere la missione più difficile si può sempre.</p>
+          </div>
+        </article>
+
+        <article class="tile reveal" style="--i:2">
+          <div class="tile__well" aria-hidden="true">
+            <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+          </div>
+          <div class="tile__body">
+            <h3>Suona anche in silenzioso</h3>
+            <p>Prima di dormire non serve attivare il suono né tenere l’app aperta: la sveglia suona anche in modalità silenziosa e con Non disturbare.</p>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section class="features" aria-label="Funzioni">
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg>
-        </div>
-        <h2>Non basta uno swipe</h2>
-        <p>Se scorri via la sveglia o la silenzi con un tasto del volume, suona di nuovo dopo un minuto, fino a tre volte. Se passi alla missione ma non la finisci entro 5 minuti, suona ancora una volta.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
-        </div>
-        <h2>Niente ripensamenti da assonnati</h2>
-        <p>La sveglia si blocca 4 ore prima di suonare. Dopo, spostarla più tardi, spegnerla, eliminarla o rendere la missione più facile interrompe la serie. Alzarsi prima o rendere la missione più difficile si può sempre.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg>
-        </div>
-        <h2>Suona anche in silenzioso</h2>
-        <p>Prima di dormire non serve attivare il suono né tenere l’app aperta: la sveglia suona anche in modalità silenziosa e con Non disturbare.</p>
-      </article>
-
-      <article class="feature">
-        <div class="feature__icon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
-        </div>
-        <h2>Il video resta sul telefono</h2>
+    <section class="privacy reveal" aria-labelledby="privacy-title">
+      <span class="privacy__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
+      <div>
+        <h2 id="privacy-title">Il video resta sul telefono</h2>
         <p>Squat, flessioni e l’oggetto nella foto vengono riconosciuti direttamente sul telefono. Video e foto non vengono inviati da nessuna parte. Niente registrazione, niente statistiche.</p>
-      </article>
+      </div>
     </section>
+
+    <section class="finale reveal" aria-labelledby="finale-title">
+      <div class="finale__mark">
+        <div class="finale__glow" aria-hidden="true"></div>
+        <img src="../assets/icon.png" alt="" width="104" height="104" loading="lazy">
+      </div>
+      <h2 id="finale-title">AlarmStreak</h2>
+      <p class="finale__lead">Una sveglia per iPhone che ti aiuta ad alzarti in orario e a iniziare la giornata in movimento. Senza Posponi.</p>
+      <p class="finale__soon">Presto su App Store</p>
+    </section>
+
+    <script>
+      (function (d) {
+        if (!d.documentElement.classList.contains("has-motion")) return;
+        var items = d.querySelectorAll(".reveal");
+        function show(el) { el.classList.add("is-in"); }
+        try {
+          var seen = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              show(e.target);
+              seen.unobserve(e.target);
+            });
+          }, { rootMargin: "0px 0px -12% 0px" });
+          Array.prototype.forEach.call(items, function (el) { seen.observe(el); });
+        } catch (err) {
+          Array.prototype.forEach.call(items, show);
+        }
+      })(document);
+    </script>
   </main>
 
   <footer class="footer">
