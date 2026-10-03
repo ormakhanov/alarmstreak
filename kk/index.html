@@ -72,19 +72,26 @@
   </header>
 
   <main>
+    <div class="tour">
     <section class="hero">
-      <h1 class="hero__title">Уақытылы ояну. <em>Денені де ояту.</em></h1>
-      <p class="hero__lead">AlarmStreak — таңды тек тапсырмадан кейін есептейтін iPhone оятқышы: отырып-тұру, жерден итерілу, есептер немесе үйдегі кездейсоқ заттың суреті.</p>
-      <p class="store">
-        <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
-        <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">Жақында App Store-да</span></span>
-      </p>
+      <div class="hero__text">
+        <h1 class="hero__title"><span class="piece" style="--n:0">Уақытылы</span> <span class="piece" style="--n:1">ояну.</span> <em><span class="piece" style="--n:2">Денені</span> <span class="piece" style="--n:3">де</span> <span class="piece" style="--n:4">ояту.</span></em></h1>
+        <p class="hero__lead">AlarmStreak — таңды тек тапсырмадан кейін есептейтін iPhone оятқышы: отырып-тұру, жерден итерілу, есептер немесе үйдегі кездейсоқ заттың суреті.</p>
+        <p class="store">
+          <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
+          <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">Жақында App Store-да</span></span>
+        </p>
+      </div>
       <div class="hero__visual">
-        <div class="hero__glow" aria-hidden="true"></div>
-        <div class="phone">
-          <div class="phone__screen">
-            <img src="../assets/screens/kk.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak-тегі «Серия» экраны: қатарынан таңдар, рекорд, белгілер және белсенділік.">
-            <span class="phone__island" aria-hidden="true"></span>
+        <div class="tour__fly">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <div class="phone">
+            <div class="phone__screen">
+              <img class="phone__shot" src="../assets/screens/kk.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak-тегі «Серия» экраны: қатарынан таңдар, рекорд, белгілер және белсенділік.">
+              <img class="phone__shot phone__shot--2" src="../assets/screens/kk-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-тегі «Таңғы тапсырманы таңдаңыз» экраны: отырып-тұру, жерден итерілу, математика немесе заттың суреті.">
+              <img class="phone__shot phone__shot--3" src="../assets/screens/kk-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-тегі «Оятқыштар» қойындысы: ояту уақыты, тапсырма және қосу-өшіру ауыстырғышы.">
+              <span class="phone__island" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -107,59 +114,82 @@
       </script>
     </section>
 
-    <div class="flow">
-      <ol class="flow__steps" role="list">
-        <li class="flow__step reveal" style="--i:0">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
-          <p><strong>Уақытында тұру.</strong> «Кейінге қалдыру» батырмасы жоқ, ал тапсырманы қоңыраудан кейін 15 минут ішінде бастау керек.</p>
-        </li>
-        <li class="flow__step reveal" style="--i:1">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
-          <p><strong>Таң қозғалыстан басталады.</strong> Отырып-тұруды не жерден итерілуді таңдаңыз — 10 қайталауды камера өзі санайды.</p>
-        </li>
-        <li class="flow__step reveal" style="--i:2">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
-          <p><strong>Жалғастырғыңыз келетін серия.</strong> Әр есептелген таң серияға бір қосады. Оятқышсыз күндер мен демалысқа не ауруға қойылған үзіліс оны үзбейді.</p>
-        </li>
-      </ol>
+    <div class="chapter chapter--start flow">
+      <div class="chapter__body">
+        <ol class="flow__steps" role="list">
+          <li class="flow__step reveal reveal--blur" style="--i:0">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
+            <p><strong>Уақытында тұру.</strong> «Кейінге қалдыру» батырмасы жоқ, ал тапсырманы қоңыраудан кейін 15 минут ішінде бастау керек.</p>
+          </li>
+          <li class="flow__step reveal reveal--blur" style="--i:1">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
+            <p><strong>Таң қозғалыстан басталады.</strong> Отырып-тұруды не жерден итерілуді таңдаңыз — 10 қайталауды камера өзі санайды.</p>
+          </li>
+          <li class="flow__step reveal reveal--blur" style="--i:2">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
+            <p><strong>Жалғастырғыңыз келетін серия.</strong> Әр есептелген таң серияға бір қосады. Оятқышсыз күндер мен демалысқа не ауруға қойылған үзіліс оны үзбейді.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="chapter__visual">
+        <div class="chapter__glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone__screen">
+            <img class="phone__shot" src="../assets/screens/kk-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-тегі «Таңғы тапсырманы таңдаңыз» экраны: отырып-тұру, жерден итерілу, математика немесе заттың суреті.">
+            <span class="phone__island" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <section class="loops" aria-labelledby="loops-title">
-      <h2 class="loops__title reveal" id="loops-title">Шынымен тұруыңыз үшін</h2>
-      <div class="bento">
-        <article class="tile tile--wide reveal">
-          <div class="tile__well" aria-hidden="true">
-            <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33</bdi></li></ol>
-          </div>
-          <div class="tile__body">
-            <h3>Жай ғана сырғыту жеткіліксіз</h3>
-            <p>Қоңырауды сырғытып өшірсеңіз не дыбыс батырмасымен басып тастасаңыз, бір минуттан кейін ол қайта шырылдайды, үш ретке дейін. Тапсырмаға өтіп, оны 5 минутта орындамасаңыз, оятқыш тағы бір рет шырылдайды.</p>
-          </div>
-        </article>
+    <section class="chapter loops" aria-labelledby="loops-title">
+      <div class="chapter__body">
+        <h2 class="loops__title reveal reveal--parts" id="loops-title"><span class="piece" style="--n:0">Шынымен</span> <span class="piece" style="--n:1">тұруыңыз</span> <span class="piece" style="--n:2">үшін</span></h2>
+        <div class="bento">
+          <article class="tile tile--wide reveal">
+            <div class="tile__well" aria-hidden="true">
+              <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33</bdi></li></ol>
+            </div>
+            <div class="tile__body">
+              <h3>Жай ғана сырғыту жеткіліксіз</h3>
+              <p>Қоңырауды сырғытып өшірсеңіз не дыбыс батырмасымен басып тастасаңыз, бір минуттан кейін ол қайта шырылдайды, үш ретке дейін. Тапсырмаға өтіп, оны 5 минутта орындамасаңыз, оятқыш тағы бір рет шырылдайды.</p>
+            </div>
+          </article>
 
-        <article class="tile reveal" style="--i:1">
-          <div class="tile__well" aria-hidden="true">
-            <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li></ol>
-          </div>
-          <div class="tile__body">
-            <h3>Ұйқылы-ояу райдан қайтпайсыз</h3>
-            <p>Қоңырауға 4 сағат қалғанда оятқыш бекітіледі. Одан кейін оны кейінірек ауыстыру, өшіру, жою немесе тапсырманы жеңілдету серияны үзеді. Ертерек тұру немесе тапсырманы қиындату әрқашан мүмкін.</p>
-          </div>
-        </article>
+          <article class="tile reveal" style="--i:1">
+            <div class="tile__well" aria-hidden="true">
+              <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li></ol>
+            </div>
+            <div class="tile__body">
+              <h3>Ұйқылы-ояу райдан қайтпайсыз</h3>
+              <p>Қоңырауға 4 сағат қалғанда оятқыш бекітіледі. Одан кейін оны кейінірек ауыстыру, өшіру, жою немесе тапсырманы жеңілдету серияны үзеді. Ертерек тұру немесе тапсырманы қиындату әрқашан мүмкін.</p>
+            </div>
+          </article>
 
-        <article class="tile reveal" style="--i:2">
-          <div class="tile__well" aria-hidden="true">
-            <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+          <article class="tile reveal" style="--i:2">
+            <div class="tile__well" aria-hidden="true">
+              <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+            </div>
+            <div class="tile__body">
+              <h3>Дыбыссыз режимде де шырылдайды</h3>
+              <p>Ұйықтар алдында дыбысты қосудың да, қолданбаны ашық ұстаудың да қажеті жоқ: телефон дыбыссыз режимде болса да, «Мазаламау» қосулы болса да, оятқыш шырылдайды.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="chapter__visual">
+        <div class="chapter__glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone__screen">
+            <img class="phone__shot" src="../assets/screens/kk-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-тегі «Оятқыштар» қойындысы: ояту уақыты, тапсырма және қосу-өшіру ауыстырғышы.">
+            <span class="phone__island" aria-hidden="true"></span>
           </div>
-          <div class="tile__body">
-            <h3>Дыбыссыз режимде де шырылдайды</h3>
-            <p>Ұйықтар алдында дыбысты қосудың да, қолданбаны ашық ұстаудың да қажеті жоқ: телефон дыбыссыз режимде болса да, «Мазаламау» қосулы болса да, оятқыш шырылдайды.</p>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
+    </div>
 
-    <section class="privacy reveal" aria-labelledby="privacy-title">
+    <section class="privacy reveal reveal--blur" aria-labelledby="privacy-title">
       <span class="privacy__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
       <div>
         <h2 id="privacy-title">Бейне телефоннан шықпайды</h2>
@@ -167,12 +197,12 @@
       </div>
     </section>
 
-    <section class="finale reveal" aria-labelledby="finale-title">
+    <section class="finale reveal reveal--parts" aria-labelledby="finale-title">
       <div class="finale__mark">
         <div class="finale__glow" aria-hidden="true"></div>
         <img src="../assets/icon.png" alt="" width="104" height="104" loading="lazy">
       </div>
-      <h2 id="finale-title">AlarmStreak</h2>
+      <h2 id="finale-title" aria-label="AlarmStreak"><span dir="ltr" aria-hidden="true"><span class="piece" style="--n:0">A</span><span class="piece" style="--n:1">l</span><span class="piece" style="--n:2">a</span><span class="piece" style="--n:3">r</span><span class="piece" style="--n:4">m</span><span class="piece" style="--n:5">S</span><span class="piece" style="--n:6">t</span><span class="piece" style="--n:7">r</span><span class="piece" style="--n:8">e</span><span class="piece" style="--n:9">a</span><span class="piece" style="--n:10">k</span></span></h2>
       <p class="finale__lead">Уақытында тұруға және күнді қозғалыспен бастауға көмектесетін iPhone оятқышы. «Кейінге қалдыру» батырмасы жоқ.</p>
       <p class="finale__soon">Жақында App Store-да</p>
     </section>
@@ -195,6 +225,83 @@
           Array.prototype.forEach.call(items, show);
         }
       })(document);
+    </script>
+
+    <script>
+      (function (w, d) {
+        var tour = d.querySelector(".tour");
+        if (!tour || !d.documentElement.classList.contains("has-motion")) return;
+        if (!w.CSS || !CSS.supports("animation-timeline: scroll()") ||
+            !CSS.supports("animation-range: 0px 1px")) return;
+        var hero = tour.querySelector(".hero__visual");
+        var places = tour.querySelectorAll(".chapter__visual");
+        var last = tour.querySelector(".loops .chapter__body");
+        if (!hero || places.length !== 2 || !last) return;
+        var wide = w.matchMedia("(min-width: 880px)");
+        var calm = w.matchMedia("(prefers-reduced-motion: no-preference)");
+        var queued = false;
+
+        function at(el) {
+          var x = 0, y = 0;
+          for (var n = el; n && n !== tour; n = n.offsetParent) {
+            x += n.offsetLeft;
+            y += n.offsetTop;
+          }
+          return { x: x, y: y };
+        }
+
+        function px(v) {
+          return Math.round(v) + "px";
+        }
+
+        function off() {
+          tour.classList.remove("is-touring");
+        }
+
+        function measure() {
+          queued = false;
+          if (!wide.matches || !calm.matches) return off();
+          var vh = w.innerHeight;
+          var top = tour.getBoundingClientRect().top + w.pageYOffset;
+          var h = hero.offsetHeight;
+          var p1 = at(hero), p2 = at(places[0]), p3 = at(places[1]), body = at(last);
+          // середины мест телефона в координатах страницы
+          var c1 = top + p1.y + h / 2, c2 = top + p2.y + h / 2, c3 = top + p3.y + h / 2;
+          // телефон держится в окне там, где стоял в герое, но не ниже середины окна
+          var r1 = Math.max(0, c1 - vh / 2);
+          var hold = c1 - r1;
+          var r2 = c2 - hold, r3 = c3 - hold;
+          // у плиток телефон стоит, пока низ столбика не дойдёт до низа телефона
+          var r4 = r3 + Math.max(0, top + body.y + last.offsetHeight - (c3 + h / 2));
+          // главы теснее половины окна — переезжать некогда, остаётся статичная вёрстка
+          if (r2 - r1 < vh / 2 || r3 - r2 < vh / 2) return off();
+          var st = tour.style;
+          st.setProperty("--r1", px(r1));
+          st.setProperty("--r2", px(r2));
+          st.setProperty("--r3", px(r3));
+          st.setProperty("--r4", px(r4));
+          st.setProperty("--ty", px(r4 - r1));
+          st.setProperty("--dx2", px(p2.x - p1.x));
+          st.setProperty("--dx3", px(p3.x - p1.x));
+          tour.classList.add("is-touring");
+        }
+
+        function queue() {
+          if (queued) return;
+          queued = true;
+          w.requestAnimationFrame(measure);
+        }
+
+        measure();
+        w.addEventListener("resize", queue);
+        w.addEventListener("load", queue);
+        if (d.fonts && d.fonts.ready) d.fonts.ready.then(queue);
+        if (w.ResizeObserver) new ResizeObserver(queue).observe(tour);
+        if (wide.addEventListener) {
+          wide.addEventListener("change", queue);
+          calm.addEventListener("change", queue);
+        }
+      })(window, document);
     </script>
   </main>
 

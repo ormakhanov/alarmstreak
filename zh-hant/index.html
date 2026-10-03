@@ -72,19 +72,26 @@
   </header>
 
   <main>
+    <div class="tour">
     <section class="hero">
-      <h1 class="hero__title">準時醒來。<em>也喚醒身體。</em></h1>
-      <p class="hero__lead">AlarmStreak 是一款 iPhone 鬧鐘，只有完成任務才計入早上：深蹲、伏地挺身、算術題，或拍下家中隨機指定的物品。</p>
-      <p class="store">
-        <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
-        <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">即將登上 App Store</span></span>
-      </p>
+      <div class="hero__text">
+        <h1 class="hero__title"><span class="piece" style="--n:0">準</span><span class="piece" style="--n:1">時</span><span class="piece" style="--n:2">醒</span><span class="piece" style="--n:3">來。</span><em><span class="piece" style="--n:4">也</span><span class="piece" style="--n:5">喚</span><span class="piece" style="--n:6">醒</span><span class="piece" style="--n:7">身</span><span class="piece" style="--n:8">體。</span></em></h1>
+        <p class="hero__lead">AlarmStreak 是一款 iPhone 鬧鐘，只有完成任務才計入早上：深蹲、伏地挺身、算術題，或拍下家中隨機指定的物品。</p>
+        <p class="store">
+          <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
+          <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">即將登上 App Store</span></span>
+        </p>
+      </div>
       <div class="hero__visual">
-        <div class="hero__glow" aria-hidden="true"></div>
-        <div class="phone">
-          <div class="phone__screen">
-            <img src="../assets/screens/zh-hant.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak 的「連勝」頁面：連續早起天數、最佳紀錄、徽章和活動。">
-            <span class="phone__island" aria-hidden="true"></span>
+        <div class="tour__fly">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <div class="phone">
+            <div class="phone__screen">
+              <img class="phone__shot" src="../assets/screens/zh-hant.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak 的「連勝」頁面：連續早起天數、最佳紀錄、徽章和活動。">
+              <img class="phone__shot phone__shot--2" src="../assets/screens/zh-hant-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的「選擇早上的任務」頁面：深蹲、伏地挺身、算術或物品照片。">
+              <img class="phone__shot phone__shot--3" src="../assets/screens/zh-hant-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的「鬧鐘」分頁：鬧鐘時間、任務和開關。">
+              <span class="phone__island" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -107,59 +114,82 @@
       </script>
     </section>
 
-    <div class="flow">
-      <ol class="flow__steps" role="list">
-        <li class="flow__step reveal" style="--i:0">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
-          <p><strong>準時起床。</strong>沒有稍後提醒按鈕，你有 15 分鐘開始任務。</p>
-        </li>
-        <li class="flow__step reveal" style="--i:1">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
-          <p><strong>早上從運動開始。</strong>選擇深蹲或伏地挺身——10 下全由相機替你計數。</p>
-        </li>
-        <li class="flow__step reveal" style="--i:2">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
-          <p><strong>想一直延續的連勝。</strong>每個計入的早上都會讓連勝加一。沒有鬧鐘的日子和因休假或生病設定的暫停都不會中斷它。</p>
-        </li>
-      </ol>
+    <div class="chapter chapter--start flow">
+      <div class="chapter__body">
+        <ol class="flow__steps" role="list">
+          <li class="flow__step reveal reveal--blur" style="--i:0">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
+            <p><strong>準時起床。</strong>沒有稍後提醒按鈕，你有 15 分鐘開始任務。</p>
+          </li>
+          <li class="flow__step reveal reveal--blur" style="--i:1">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
+            <p><strong>早上從運動開始。</strong>選擇深蹲或伏地挺身——10 下全由相機替你計數。</p>
+          </li>
+          <li class="flow__step reveal reveal--blur" style="--i:2">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
+            <p><strong>想一直延續的連勝。</strong>每個計入的早上都會讓連勝加一。沒有鬧鐘的日子和因休假或生病設定的暫停都不會中斷它。</p>
+          </li>
+        </ol>
+      </div>
+      <div class="chapter__visual">
+        <div class="chapter__glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone__screen">
+            <img class="phone__shot" src="../assets/screens/zh-hant-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的「選擇早上的任務」頁面：深蹲、伏地挺身、算術或物品照片。">
+            <span class="phone__island" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <section class="loops" aria-labelledby="loops-title">
-      <h2 class="loops__title reveal" id="loops-title">讓你真正起床</h2>
-      <div class="bento">
-        <article class="tile tile--wide reveal">
-          <div class="tile__well" aria-hidden="true">
-            <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33</bdi></li></ol>
-          </div>
-          <div class="tile__body">
-            <h3>只滑一下不夠</h3>
-            <p>如果滑動關閉鬧鐘或用音量鍵讓它靜音，一分鐘後它會再次響起，最多三次。如果進入任務卻沒在 5 分鐘內完成，它會再響一次。</p>
-          </div>
-        </article>
+    <section class="chapter loops" aria-labelledby="loops-title">
+      <div class="chapter__body">
+        <h2 class="loops__title reveal reveal--parts" id="loops-title"><span class="piece" style="--n:0">讓</span><span class="piece" style="--n:1">你</span><span class="piece" style="--n:2">真</span><span class="piece" style="--n:3">正</span><span class="piece" style="--n:4">起</span><span class="piece" style="--n:5">床</span></h2>
+        <div class="bento">
+          <article class="tile tile--wide reveal">
+            <div class="tile__well" aria-hidden="true">
+              <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33</bdi></li></ol>
+            </div>
+            <div class="tile__body">
+              <h3>只滑一下不夠</h3>
+              <p>如果滑動關閉鬧鐘或用音量鍵讓它靜音，一分鐘後它會再次響起，最多三次。如果進入任務卻沒在 5 分鐘內完成，它會再響一次。</p>
+            </div>
+          </article>
 
-        <article class="tile reveal" style="--i:1">
-          <div class="tile__well" aria-hidden="true">
-            <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li></ol>
-          </div>
-          <div class="tile__body">
-            <h3>睡意朦朧時改不了主意</h3>
-            <p>響鈴前 4 小時鬧鐘會鎖定。之後延後、關閉、刪除鬧鐘或降低任務難度都會中斷連勝。提早起床或提高任務難度隨時都可以。</p>
-          </div>
-        </article>
+          <article class="tile reveal" style="--i:1">
+            <div class="tile__well" aria-hidden="true">
+              <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30</bdi></li></ol>
+            </div>
+            <div class="tile__body">
+              <h3>睡意朦朧時改不了主意</h3>
+              <p>響鈴前 4 小時鬧鐘會鎖定。之後延後、關閉、刪除鬧鐘或降低任務難度都會中斷連勝。提早起床或提高任務難度隨時都可以。</p>
+            </div>
+          </article>
 
-        <article class="tile reveal" style="--i:2">
-          <div class="tile__well" aria-hidden="true">
-            <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+          <article class="tile reveal" style="--i:2">
+            <div class="tile__well" aria-hidden="true">
+              <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+            </div>
+            <div class="tile__body">
+              <h3>靜音模式下也會響</h3>
+              <p>睡前不用打開聲音，也不用讓 App 保持開啟：即使手機處於靜音模式或開啟了「勿擾模式」，鬧鐘也會響。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="chapter__visual">
+        <div class="chapter__glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone__screen">
+            <img class="phone__shot" src="../assets/screens/zh-hant-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的「鬧鐘」分頁：鬧鐘時間、任務和開關。">
+            <span class="phone__island" aria-hidden="true"></span>
           </div>
-          <div class="tile__body">
-            <h3>靜音模式下也會響</h3>
-            <p>睡前不用打開聲音，也不用讓 App 保持開啟：即使手機處於靜音模式或開啟了「勿擾模式」，鬧鐘也會響。</p>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
+    </div>
 
-    <section class="privacy reveal" aria-labelledby="privacy-title">
+    <section class="privacy reveal reveal--blur" aria-labelledby="privacy-title">
       <span class="privacy__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
       <div>
         <h2 id="privacy-title">影片不會離開你的手機</h2>
@@ -167,12 +197,12 @@
       </div>
     </section>
 
-    <section class="finale reveal" aria-labelledby="finale-title">
+    <section class="finale reveal reveal--parts" aria-labelledby="finale-title">
       <div class="finale__mark">
         <div class="finale__glow" aria-hidden="true"></div>
         <img src="../assets/icon.png" alt="" width="104" height="104" loading="lazy">
       </div>
-      <h2 id="finale-title">AlarmStreak</h2>
+      <h2 id="finale-title" aria-label="AlarmStreak"><span dir="ltr" aria-hidden="true"><span class="piece" style="--n:0">A</span><span class="piece" style="--n:1">l</span><span class="piece" style="--n:2">a</span><span class="piece" style="--n:3">r</span><span class="piece" style="--n:4">m</span><span class="piece" style="--n:5">S</span><span class="piece" style="--n:6">t</span><span class="piece" style="--n:7">r</span><span class="piece" style="--n:8">e</span><span class="piece" style="--n:9">a</span><span class="piece" style="--n:10">k</span></span></h2>
       <p class="finale__lead">幫你準時起床、用運動開啟新的一天的 iPhone 鬧鐘。沒有稍後提醒按鈕。</p>
       <p class="finale__soon">即將登上 App Store</p>
     </section>
@@ -195,6 +225,83 @@
           Array.prototype.forEach.call(items, show);
         }
       })(document);
+    </script>
+
+    <script>
+      (function (w, d) {
+        var tour = d.querySelector(".tour");
+        if (!tour || !d.documentElement.classList.contains("has-motion")) return;
+        if (!w.CSS || !CSS.supports("animation-timeline: scroll()") ||
+            !CSS.supports("animation-range: 0px 1px")) return;
+        var hero = tour.querySelector(".hero__visual");
+        var places = tour.querySelectorAll(".chapter__visual");
+        var last = tour.querySelector(".loops .chapter__body");
+        if (!hero || places.length !== 2 || !last) return;
+        var wide = w.matchMedia("(min-width: 880px)");
+        var calm = w.matchMedia("(prefers-reduced-motion: no-preference)");
+        var queued = false;
+
+        function at(el) {
+          var x = 0, y = 0;
+          for (var n = el; n && n !== tour; n = n.offsetParent) {
+            x += n.offsetLeft;
+            y += n.offsetTop;
+          }
+          return { x: x, y: y };
+        }
+
+        function px(v) {
+          return Math.round(v) + "px";
+        }
+
+        function off() {
+          tour.classList.remove("is-touring");
+        }
+
+        function measure() {
+          queued = false;
+          if (!wide.matches || !calm.matches) return off();
+          var vh = w.innerHeight;
+          var top = tour.getBoundingClientRect().top + w.pageYOffset;
+          var h = hero.offsetHeight;
+          var p1 = at(hero), p2 = at(places[0]), p3 = at(places[1]), body = at(last);
+          // середины мест телефона в координатах страницы
+          var c1 = top + p1.y + h / 2, c2 = top + p2.y + h / 2, c3 = top + p3.y + h / 2;
+          // телефон держится в окне там, где стоял в герое, но не ниже середины окна
+          var r1 = Math.max(0, c1 - vh / 2);
+          var hold = c1 - r1;
+          var r2 = c2 - hold, r3 = c3 - hold;
+          // у плиток телефон стоит, пока низ столбика не дойдёт до низа телефона
+          var r4 = r3 + Math.max(0, top + body.y + last.offsetHeight - (c3 + h / 2));
+          // главы теснее половины окна — переезжать некогда, остаётся статичная вёрстка
+          if (r2 - r1 < vh / 2 || r3 - r2 < vh / 2) return off();
+          var st = tour.style;
+          st.setProperty("--r1", px(r1));
+          st.setProperty("--r2", px(r2));
+          st.setProperty("--r3", px(r3));
+          st.setProperty("--r4", px(r4));
+          st.setProperty("--ty", px(r4 - r1));
+          st.setProperty("--dx2", px(p2.x - p1.x));
+          st.setProperty("--dx3", px(p3.x - p1.x));
+          tour.classList.add("is-touring");
+        }
+
+        function queue() {
+          if (queued) return;
+          queued = true;
+          w.requestAnimationFrame(measure);
+        }
+
+        measure();
+        w.addEventListener("resize", queue);
+        w.addEventListener("load", queue);
+        if (d.fonts && d.fonts.ready) d.fonts.ready.then(queue);
+        if (w.ResizeObserver) new ResizeObserver(queue).observe(tour);
+        if (wide.addEventListener) {
+          wide.addEventListener("change", queue);
+          calm.addEventListener("change", queue);
+        }
+      })(window, document);
     </script>
   </main>
 

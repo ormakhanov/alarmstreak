@@ -72,19 +72,26 @@
   </header>
 
   <main>
+    <div class="tour">
     <section class="hero">
-      <h1 class="hero__title">Wake up on time. <em>Wake your body up, too.</em></h1>
-      <p class="hero__lead">AlarmStreak is an alarm for iPhone that counts your morning only after a mission: squats, push-ups, math problems, or a photo of a random item at home.</p>
-      <p class="store">
-        <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
-        <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">Coming soon to the App Store</span></span>
-      </p>
+      <div class="hero__text">
+        <h1 class="hero__title"><span class="piece" style="--n:0">Wake</span> <span class="piece" style="--n:1">up</span> <span class="piece" style="--n:2">on</span> <span class="piece" style="--n:3">time.</span> <em><span class="piece" style="--n:4">Wake</span> <span class="piece" style="--n:5">your</span> <span class="piece" style="--n:6">body</span> <span class="piece" style="--n:7">up,</span> <span class="piece" style="--n:8">too.</span></em></h1>
+        <p class="hero__lead">AlarmStreak is an alarm for iPhone that counts your morning only after a mission: squats, push-ups, math problems, or a photo of a random item at home.</p>
+        <p class="store">
+          <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
+          <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">Coming soon to the App Store</span></span>
+        </p>
+      </div>
       <div class="hero__visual">
-        <div class="hero__glow" aria-hidden="true"></div>
-        <div class="phone">
-          <div class="phone__screen">
-            <img src="../assets/screens/en.jpg" width="402" height="874" fetchpriority="high" alt="The Streak screen in AlarmStreak: mornings in a row, your record, badges and activity.">
-            <span class="phone__island" aria-hidden="true"></span>
+        <div class="tour__fly">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <div class="phone">
+            <div class="phone__screen">
+              <img class="phone__shot" src="../assets/screens/en.jpg" width="402" height="874" fetchpriority="high" alt="The Streak screen in AlarmStreak: mornings in a row, your record, badges and activity.">
+              <img class="phone__shot phone__shot--2" src="../assets/screens/en-mission.jpg" width="402" height="874" loading="lazy" alt="The “Choose your morning mission” screen in AlarmStreak: squats, push-ups, math or an item photo.">
+              <img class="phone__shot phone__shot--3" src="../assets/screens/en-alarms.jpg" width="402" height="874" loading="lazy" alt="The Alarms tab in AlarmStreak: the alarm time, its mission and the on/off switch.">
+              <span class="phone__island" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -107,59 +114,82 @@
       </script>
     </section>
 
-    <div class="flow">
-      <ol class="flow__steps" role="list">
-        <li class="flow__step reveal" style="--i:0">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
-          <p><strong>Up on time.</strong> There’s no snooze button, and you have 15 minutes to start the mission.</p>
-        </li>
-        <li class="flow__step reveal" style="--i:1">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
-          <p><strong>Mornings start with movement.</strong> Choose squats or push-ups — the camera counts all 10 reps for you.</p>
-        </li>
-        <li class="flow__step reveal" style="--i:2">
-          <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
-          <p><strong>A streak you’ll want to keep.</strong> Every counted morning adds one. Days without an alarm and a pause for vacation or illness don’t break it.</p>
-        </li>
-      </ol>
+    <div class="chapter chapter--start flow">
+      <div class="chapter__body">
+        <ol class="flow__steps" role="list">
+          <li class="flow__step reveal reveal--blur" style="--i:0">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg></span>
+            <p><strong>Up on time.</strong> There’s no snooze button, and you have 15 minutes to start the mission.</p>
+          </li>
+          <li class="flow__step reveal reveal--blur" style="--i:1">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg></span>
+            <p><strong>Mornings start with movement.</strong> Choose squats or push-ups — the camera counts all 10 reps for you.</p>
+          </li>
+          <li class="flow__step reveal reveal--blur" style="--i:2">
+            <span class="flow__node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg></span>
+            <p><strong>A streak you’ll want to keep.</strong> Every counted morning adds one. Days without an alarm and a pause for vacation or illness don’t break it.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="chapter__visual">
+        <div class="chapter__glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone__screen">
+            <img class="phone__shot" src="../assets/screens/en-mission.jpg" width="402" height="874" loading="lazy" alt="The “Choose your morning mission” screen in AlarmStreak: squats, push-ups, math or an item photo.">
+            <span class="phone__island" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <section class="loops" aria-labelledby="loops-title">
-      <h2 class="loops__title reveal" id="loops-title">So you actually get up</h2>
-      <div class="bento">
-        <article class="tile tile--wide reveal">
-          <div class="tile__well" aria-hidden="true">
-            <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30 AM</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31 AM</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32 AM</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33 AM</bdi></li></ol>
-          </div>
-          <div class="tile__body">
-            <h3>You can’t just swipe it away</h3>
-            <p>If you swipe the alarm away or silence it with a volume button, it rings again a minute later, up to three times. If you go to the mission but don’t finish it within 5 minutes, it rings once more.</p>
-          </div>
-        </article>
+    <section class="chapter loops" aria-labelledby="loops-title">
+      <div class="chapter__body">
+        <h2 class="loops__title reveal reveal--parts" id="loops-title"><span class="piece" style="--n:0">So</span> <span class="piece" style="--n:1">you</span> <span class="piece" style="--n:2">actually</span> <span class="piece" style="--n:3">get</span> <span class="piece" style="--n:4">up</span></h2>
+        <div class="bento">
+          <article class="tile tile--wide reveal">
+            <div class="tile__well" aria-hidden="true">
+              <ol class="again"><li class="chip" style="--i:0"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30 AM</bdi></li><li class="chip" style="--i:1"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:31 AM</bdi></li><li class="chip" style="--i:2"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:32 AM</bdi></li><li class="chip" style="--i:3"><svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 0 1 12.8-5.3L19.5 9"/><path d="M19.5 4.5V9H15"/><path d="M19.5 12a7.5 7.5 0 0 1-12.8 5.3L4.5 15"/><path d="M4.5 19.5V15H9"/></svg><bdi>6:33 AM</bdi></li></ol>
+            </div>
+            <div class="tile__body">
+              <h3>You can’t just swipe it away</h3>
+              <p>If you swipe the alarm away or silence it with a volume button, it rings again a minute later, up to three times. If you go to the mission but don’t finish it within 5 minutes, it rings once more.</p>
+            </div>
+          </article>
 
-        <article class="tile reveal" style="--i:1">
-          <div class="tile__well" aria-hidden="true">
-            <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30 AM</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30 AM</bdi></li></ol>
-          </div>
-          <div class="tile__body">
-            <h3>No changing your mind half-asleep</h3>
-            <p>The alarm locks 4 hours before it rings. After that, moving it later, turning it off, deleting it or making the mission easier breaks your streak. Getting up earlier or making the mission harder is always fine.</p>
-          </div>
-        </article>
+          <article class="tile reveal" style="--i:1">
+            <div class="tile__well" aria-hidden="true">
+              <ol class="lock"><li class="chip"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><bdi>2:30 AM</bdi></li><li class="lock__bar"><span class="lock__fill"></span></li><li class="chip"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><bdi>6:30 AM</bdi></li></ol>
+            </div>
+            <div class="tile__body">
+              <h3>No changing your mind half-asleep</h3>
+              <p>The alarm locks 4 hours before it rings. After that, moving it later, turning it off, deleting it or making the mission easier breaks your streak. Getting up earlier or making the mission harder is always fine.</p>
+            </div>
+          </article>
 
-        <article class="tile reveal" style="--i:2">
-          <div class="tile__well" aria-hidden="true">
-            <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+          <article class="tile reveal" style="--i:2">
+            <div class="tile__well" aria-hidden="true">
+              <span class="ripple"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg></span>
+            </div>
+            <div class="tile__body">
+              <h3>Rings even on silent</h3>
+              <p>No need to turn the sound on or keep the app open: the alarm rings even when your phone is on silent or in Do Not Disturb.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="chapter__visual">
+        <div class="chapter__glow" aria-hidden="true"></div>
+        <div class="phone">
+          <div class="phone__screen">
+            <img class="phone__shot" src="../assets/screens/en-alarms.jpg" width="402" height="874" loading="lazy" alt="The Alarms tab in AlarmStreak: the alarm time, its mission and the on/off switch.">
+            <span class="phone__island" aria-hidden="true"></span>
           </div>
-          <div class="tile__body">
-            <h3>Rings even on silent</h3>
-            <p>No need to turn the sound on or keep the app open: the alarm rings even when your phone is on silent or in Do Not Disturb.</p>
-          </div>
-        </article>
+        </div>
       </div>
     </section>
+    </div>
 
-    <section class="privacy reveal" aria-labelledby="privacy-title">
+    <section class="privacy reveal reveal--blur" aria-labelledby="privacy-title">
       <span class="privacy__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6v5.5c0 4.2 2.9 7.7 7 9 4.1-1.3 7-4.8 7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg></span>
       <div>
         <h2 id="privacy-title">Video never leaves your phone</h2>
@@ -167,12 +197,12 @@
       </div>
     </section>
 
-    <section class="finale reveal" aria-labelledby="finale-title">
+    <section class="finale reveal reveal--parts" aria-labelledby="finale-title">
       <div class="finale__mark">
         <div class="finale__glow" aria-hidden="true"></div>
         <img src="../assets/icon.png" alt="" width="104" height="104" loading="lazy">
       </div>
-      <h2 id="finale-title">AlarmStreak</h2>
+      <h2 id="finale-title" aria-label="AlarmStreak"><span dir="ltr" aria-hidden="true"><span class="piece" style="--n:0">A</span><span class="piece" style="--n:1">l</span><span class="piece" style="--n:2">a</span><span class="piece" style="--n:3">r</span><span class="piece" style="--n:4">m</span><span class="piece" style="--n:5">S</span><span class="piece" style="--n:6">t</span><span class="piece" style="--n:7">r</span><span class="piece" style="--n:8">e</span><span class="piece" style="--n:9">a</span><span class="piece" style="--n:10">k</span></span></h2>
       <p class="finale__lead">An alarm for iPhone that helps you get up on time and start the day with movement. No snooze button.</p>
       <p class="finale__soon">Coming soon to the App Store</p>
     </section>
@@ -195,6 +225,83 @@
           Array.prototype.forEach.call(items, show);
         }
       })(document);
+    </script>
+
+    <script>
+      (function (w, d) {
+        var tour = d.querySelector(".tour");
+        if (!tour || !d.documentElement.classList.contains("has-motion")) return;
+        if (!w.CSS || !CSS.supports("animation-timeline: scroll()") ||
+            !CSS.supports("animation-range: 0px 1px")) return;
+        var hero = tour.querySelector(".hero__visual");
+        var places = tour.querySelectorAll(".chapter__visual");
+        var last = tour.querySelector(".loops .chapter__body");
+        if (!hero || places.length !== 2 || !last) return;
+        var wide = w.matchMedia("(min-width: 880px)");
+        var calm = w.matchMedia("(prefers-reduced-motion: no-preference)");
+        var queued = false;
+
+        function at(el) {
+          var x = 0, y = 0;
+          for (var n = el; n && n !== tour; n = n.offsetParent) {
+            x += n.offsetLeft;
+            y += n.offsetTop;
+          }
+          return { x: x, y: y };
+        }
+
+        function px(v) {
+          return Math.round(v) + "px";
+        }
+
+        function off() {
+          tour.classList.remove("is-touring");
+        }
+
+        function measure() {
+          queued = false;
+          if (!wide.matches || !calm.matches) return off();
+          var vh = w.innerHeight;
+          var top = tour.getBoundingClientRect().top + w.pageYOffset;
+          var h = hero.offsetHeight;
+          var p1 = at(hero), p2 = at(places[0]), p3 = at(places[1]), body = at(last);
+          // середины мест телефона в координатах страницы
+          var c1 = top + p1.y + h / 2, c2 = top + p2.y + h / 2, c3 = top + p3.y + h / 2;
+          // телефон держится в окне там, где стоял в герое, но не ниже середины окна
+          var r1 = Math.max(0, c1 - vh / 2);
+          var hold = c1 - r1;
+          var r2 = c2 - hold, r3 = c3 - hold;
+          // у плиток телефон стоит, пока низ столбика не дойдёт до низа телефона
+          var r4 = r3 + Math.max(0, top + body.y + last.offsetHeight - (c3 + h / 2));
+          // главы теснее половины окна — переезжать некогда, остаётся статичная вёрстка
+          if (r2 - r1 < vh / 2 || r3 - r2 < vh / 2) return off();
+          var st = tour.style;
+          st.setProperty("--r1", px(r1));
+          st.setProperty("--r2", px(r2));
+          st.setProperty("--r3", px(r3));
+          st.setProperty("--r4", px(r4));
+          st.setProperty("--ty", px(r4 - r1));
+          st.setProperty("--dx2", px(p2.x - p1.x));
+          st.setProperty("--dx3", px(p3.x - p1.x));
+          tour.classList.add("is-touring");
+        }
+
+        function queue() {
+          if (queued) return;
+          queued = true;
+          w.requestAnimationFrame(measure);
+        }
+
+        measure();
+        w.addEventListener("resize", queue);
+        w.addEventListener("load", queue);
+        if (d.fonts && d.fonts.ready) d.fonts.ready.then(queue);
+        if (w.ResizeObserver) new ResizeObserver(queue).observe(tour);
+        if (wide.addEventListener) {
+          wide.addEventListener("change", queue);
+          calm.addEventListener("change", queue);
+        }
+      })(window, document);
     </script>
   </main>
 

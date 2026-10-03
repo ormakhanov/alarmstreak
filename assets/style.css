@@ -34,13 +34,17 @@
   --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
-/* Начало строки для transform-origin, у которого нет логических значений. */
+/* Начало строки для transform-origin, у которого нет логических значений,
+   и знак направления строки: 1 — слева направо, −1 — справа налево. Им
+   переворачивается поворот телефона в пути. */
 :root {
   --edge-start: left;
+  --dir: 1;
 }
 
 [dir="rtl"] {
   --edge-start: right;
+  --dir: -1;
 }
 
 *,
@@ -152,6 +156,17 @@ img {
   display: none;
 }
 
+/* Открытое меню держит кнопку подсвеченной — видно, откуда список. */
+.lang-menu[open] summary {
+  background: var(--raised);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lang-menu summary:hover {
+    background: var(--raised);
+  }
+}
+
 .lang-menu summary svg {
   width: 15px;
   height: 15px;
@@ -232,6 +247,16 @@ main {
   color: var(--accent);
 }
 
+/* Слово крупного заголовка (а в названии — буква): встаёт отдельно, поэтому
+   inline-block — transform у строчного элемента не работает. Всегда, а не
+   только при движении: перенос строк не должен зависеть от настроек.
+   anywhere — длинное слово уже экрана переносится внутри себя, как прежде:
+   break-word не уменьшает минимальную ширину inline-block. */
+.piece {
+  display: inline-block;
+  overflow-wrap: anywhere;
+}
+
 .hero__lead {
   margin: 0 0 24px;
   max-width: 34em;
@@ -274,7 +299,8 @@ main {
   line-height: 1.3;
 }
 
-.hero__visual {
+.hero__visual,
+.chapter__visual {
   position: relative;
   max-width: 400px;
   margin: 48px auto 16px;
@@ -282,7 +308,8 @@ main {
 
 /* Восход за телефоном: плотная середина спрятана за корпусом, по краям
    видна кайма. Это тот же акцент с прозрачностью — нового цвета нет. */
-.hero__glow {
+.hero__glow,
+.chapter__glow {
   position: absolute;
   z-index: -1;
   left: 50%;
@@ -368,6 +395,20 @@ main {
   object-fit: cover;
 }
 
+/* Экраны глав в телефоне героя нужны только в пути (переезд по главам):
+   без движения их показывают телефоны самих глав. */
+.phone__shot--2,
+.phone__shot--3 {
+  display: none;
+}
+
+/* Участок от героя до плиток. Скрипт TOUR меряет места телефонов через
+   offsetTop/offsetLeft относительно .tour, поэтому .tour должен быть их
+   ближайшим позиционированным предком: героя и главы не позиционировать. */
+.tour {
+  position: relative;
+}
+
 /* Dynamic Island: 126 × 37 pt, 11 pt от верха экрана. */
 .phone__island {
   position: absolute;
@@ -424,7 +465,8 @@ main {
    вытягиваем его в эллипс по высоте телефона, чтобы ореол был виден сверху
    и снизу. */
 @media (max-width: 879px) {
-  .hero__glow {
+  .hero__glow,
+  .chapter__glow {
     aspect-ratio: auto;
     height: 150%;
   }
@@ -434,13 +476,7 @@ main {
   .hero {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    grid-template-rows: 1fr repeat(3, auto) 1fr;
-    grid-template-areas:
-      ".     visual"
-      "title visual"
-      "lead  visual"
-      "store visual"
-      ".     visual";
+    align-items: center;
     column-gap: 64px;
     padding-top: 88px;
     padding-bottom: 96px;
@@ -450,22 +486,11 @@ main {
      там четыре-пять строк заголовка. Здесь он ≈ 0,09 ширины колонки — на
      всех языках не больше трёх строк. */
   .hero__title {
-    grid-area: title;
     font-size: clamp(38px, 4.9vw - 4px, 48px);
   }
 
-  .hero__lead {
-    grid-area: lead;
-  }
-
-  .store {
-    grid-area: store;
-  }
-
-  .hero__visual {
-    grid-area: visual;
-    align-self: center;
-    justify-self: end;
+  .hero__visual,
+  .chapter__visual {
     width: 100%;
     margin: 0;
   }
@@ -482,13 +507,15 @@ main {
     border: 2px solid CanvasText;
   }
 
-  .hero__glow {
+  .hero__glow,
+  .chapter__glow {
     display: none;
   }
 }
 
 @media print {
-  .hero__glow {
+  .hero__glow,
+  .chapter__glow {
     display: none;
   }
 }
@@ -505,7 +532,9 @@ main {
   движение» и в печати анимаций нет вовсе. Гасить их через animation: none
   ненадёжно — псевдоэлементы (заслонка экрана) двигались бы дальше.
 
-  Текст выплывает сразу при загрузке. Сцена с телефоном ждёт, пока её увидят:
+  Текст выплывает сразу при загрузке: заголовок встаёт слово за словом — как
+  телефон, поворотом вокруг нижнего края, — подзаголовок проступает из
+  размытия. Сцена с телефоном ждёт, пока её увидят:
   класс has-motion (ворота в <head>, build.py) ставит её на паузу через
   --play, скрипт после телефона снимает паузу классом is-playing, а
   «дыхание» свечения идёт, пока телефон на экране (is-glowing). Пауза —
@@ -515,23 +544,46 @@ main {
 */
 
 @media screen and (prefers-reduced-motion: no-preference) {
-  .hero__title,
+  /* Кнопка меню языков чуть проседает под пальцем. */
+  .lang-menu summary {
+    transition:
+      background-color 150ms ease,
+      transform 160ms var(--ease-out);
+  }
+
+  .lang-menu summary:active {
+    transform: scale(0.97);
+  }
+
+  .picker__list a {
+    transition: background-color 150ms ease;
+  }
+
+  /* Слово за словом, по 70 мс. Второе предложение (em) продолжает счёт —
+     заголовок читается одной волной. */
+  .hero__title .piece {
+    transform-origin: 50% 100%;
+    animation: piece-up 800ms var(--ease-out) calc(var(--n) * 70ms) backwards;
+  }
+
+  /* Подзаголовок — когда заголовок встал наполовину. */
   .hero__lead,
   .store {
-    animation: rise-in 600ms var(--ease-out) backwards;
-  }
-
-  .hero__lead {
-    animation-delay: 80ms;
+    animation: rise-in 700ms var(--ease-out) 320ms backwards;
   }
 
   .store {
-    animation-delay: 160ms;
+    animation-delay: 420ms;
   }
 
   .has-motion .hero__visual {
     --play: paused;
     --glow-play: paused;
+  }
+
+  /* Перспектива — у прямого родителя телефона: без неё rotateX подъёма
+     выглядит плоским сжатием. Родитель теперь .tour__fly. */
+  .has-motion .tour__fly {
     perspective: 1400px;
   }
 
@@ -552,7 +604,7 @@ main {
 
   /* 2. Телефон берут со стола: он поднимается и выпрямляется, поворачиваясь
      вокруг нижнего края. Без отскока — его ставят, а не бросают. */
-  .has-motion .phone {
+  .has-motion .hero__visual .phone {
     transform-origin: 50% 100%;
     animation: phone-rise 1100ms var(--ease-out) 100ms backwards var(--play);
   }
@@ -560,15 +612,40 @@ main {
   /* 3. Экран загорается, пока телефон поднимают, — как «Поднятие для
      активации» на iPhone. Иначе чёрный корпус с тёмным экраном на чёрном
      фоне не видно, и подъём с наклоном проходит впустую. */
-  .has-motion .phone__screen::after {
+  .has-motion .hero__visual .phone__screen::after {
     animation: screen-wake 450ms var(--ease-out) 350ms backwards var(--play);
   }
 }
 
+/* Проступает из размытия: размытие прячет, что текст ещё не на месте. */
 @keyframes rise-in {
   from {
     opacity: 0;
     transform: translateY(12px);
+    filter: blur(8px);
+  }
+}
+
+/* Слово лежит, верх отклонён назад, — и встаёт вокруг нижнего края.
+   perspective — в обоих кадрах: переход от perspective() к none браузеры
+   интерполируют по-разному. Конечный кадр совпадает со статикой. */
+@keyframes piece-up {
+  from {
+    opacity: 0;
+    transform: perspective(600px) rotateX(70deg);
+  }
+
+  to {
+    transform: perspective(600px) rotateX(0deg);
+  }
+}
+
+/* Иконка в финале проступает из восхода. Не из scale(0): она уже там. */
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(12px);
   }
 }
 
@@ -622,6 +699,56 @@ main {
   }
 }
 
+/* ── Главная: главы ────────────────────────────────────────────────── */
+
+/* Глава — текст и телефон со своим экраном приложения. На телефоне всё
+   столбиком, текст первым, как в герое. С 880 px — две колонки, как у
+   героя, и телефон чередует стороны: у героя он справа, у шагов слева, у
+   плиток снова справа (в RTL зеркально — grid разворачивается сам).
+   Колонка телефона везде 1fr против 1.15fr у текста, поэтому телефоны
+   одного размера и стоят на одной вертикали. */
+.chapter {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 8px var(--gutter) 64px;
+}
+
+/* После плиток идёт блок приватности со своим отступом сверху. */
+.chapter.loops {
+  padding-bottom: 0;
+}
+
+@media (min-width: 880px) {
+  .chapter {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 64px;
+    padding-top: 48px;
+    padding-bottom: 96px;
+  }
+
+  .chapter--start {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  }
+
+  .chapter--start .chapter__visual {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .chapter--start .chapter__body {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  /* Столбик плиток выше телефона: телефон встаёт у заголовка, а не
+     посередине, напротив пустого места между плитками. */
+  .loops .chapter__visual {
+    align-self: start;
+  }
+}
+
 /* ── Главная: шаги утра ────────────────────────────────────────────── */
 
 /* Контурные значки блоков ниже героя: акцентный контур толщиной 2. */
@@ -636,14 +763,7 @@ main {
   stroke-linejoin: round;
 }
 
-/* Звонок → движение → серия. Линия ведёт от значка к значку: на телефоне
-   вниз, на широком экране вбок. */
-.flow {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 8px var(--gutter) 64px;
-}
-
+/* Звонок → движение → серия. Линия ведёт от значка к значку вниз. */
 .flow__steps {
   margin: 0;
   padding: 0;
@@ -652,9 +772,7 @@ main {
   gap: 28px;
 }
 
-/* align-content: start — шаги в ряду растягиваются до самого высокого, и без
-   него лишняя высота делилась бы между значком и текстом: заголовки коротких
-   шагов съезжали бы ниже, чем у длинного. */
+/* align-content: start — текст шага прижат к верху, к своему значку. */
 .flow__step {
   position: relative;
   display: grid;
@@ -709,43 +827,7 @@ main {
   line-height: 1.3;
 }
 
-@media (min-width: 880px) {
-  .flow {
-    padding-bottom: 88px;
-  }
-
-  .flow__steps {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 40px;
-  }
-
-  .flow__step {
-    grid-template-columns: none;
-    gap: 20px;
-  }
-
-  /* От значка (48 + 16) до следующего (колонка + 40 − 16). */
-  .flow__step:not(:last-child)::after {
-    top: 23px;
-    bottom: auto;
-    inset-inline-start: 64px;
-    inset-inline-end: -24px;
-    width: auto;
-    height: 2px;
-  }
-
-  .flow p {
-    padding-top: 0;
-  }
-}
-
 /* ── Главная: плитки ───────────────────────────────────────────────── */
-
-.loops {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 var(--gutter);
-}
 
 .loops__title {
   margin: 0 0 24px;
@@ -968,13 +1050,19 @@ main {
 }
 
 @media (min-width: 880px) {
-  .tile--wide h3 {
-    font-size: 26px;
-    letter-spacing: -0.01em;
+  /* С 880 px плитки стоят в колонке рядом с телефоном (420–530 px):
+     столбиком, как на узком экране, и у первой схема тоже сверху. */
+  .bento {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .tile--wide p {
-    font-size: 17px;
+  .tile--wide {
+    display: flex;
+  }
+
+  .tile--wide .tile__body {
+    align-self: stretch;
+    padding: 18px 14px 14px;
   }
 }
 
@@ -1159,18 +1247,55 @@ main {
   проигрывает то, о чём текст: звонок повторяется, полоса закрепления
   заполняется, колокольчик звенит. Финальный кадр — статичные стили выше,
   как и у телефона в герое.
+
+  reveal--blur — блок ещё и проступает из размытия. reveal--parts — блок
+  стоит на месте, а появляются его части: слова заголовка, иконка и
+  название в финале.
 */
 
 @media screen and (prefers-reduced-motion: no-preference) {
   .has-motion .reveal {
     transition:
       opacity 700ms var(--ease-out) calc(var(--i, 0) * 90ms),
-      transform 700ms var(--ease-out) calc(var(--i, 0) * 90ms);
+      transform 700ms var(--ease-out) calc(var(--i, 0) * 90ms),
+      filter 700ms var(--ease-out) calc(var(--i, 0) * 90ms);
   }
 
-  .has-motion .reveal:not(.is-in) {
+  .has-motion .reveal:not(.is-in, .reveal--parts) {
     opacity: 0;
     transform: translateY(24px);
+  }
+
+  .has-motion .reveal--blur:not(.is-in) {
+    filter: blur(8px);
+  }
+
+  .has-motion .reveal--parts:not(.is-in) :is(.piece, .finale__glow, .finale__mark img, .finale__lead, .finale__soon) {
+    opacity: 0;
+  }
+
+  .has-motion .loops__title.is-in .piece {
+    transform-origin: 50% 100%;
+    animation: piece-up 800ms var(--ease-out) calc(var(--n) * 70ms) backwards;
+  }
+
+  /* Финал: иконка проступает из восхода, название встаёт по буквам — по
+     40 мс, букв больше, чем слов, — за ним подпись. */
+  .has-motion .finale.is-in .finale__mark img {
+    animation: zoom-in 900ms var(--ease-out) backwards;
+  }
+
+  .has-motion .finale.is-in .piece {
+    transform-origin: 50% 100%;
+    animation: piece-up 700ms var(--ease-out) calc(200ms + var(--n) * 40ms) backwards;
+  }
+
+  .has-motion .finale.is-in .finale__lead {
+    animation: rise-in 700ms var(--ease-out) 650ms backwards;
+  }
+
+  .has-motion .finale.is-in .finale__soon {
+    animation: rise-in 700ms var(--ease-out) 750ms backwards;
   }
 
   /* Линия шага дорисовывается к следующему значку. */
@@ -1214,16 +1339,6 @@ main {
   }
 }
 
-@media screen and (min-width: 880px) and (prefers-reduced-motion: no-preference) {
-  .has-motion .flow__step::after {
-    transform-origin: var(--edge-start);
-  }
-
-  .has-motion .flow__step:not(.is-in)::after {
-    transform: scaleX(0);
-  }
-}
-
 /* Полоса закрепления заполняется от 2:30 к 6:30 — в RTL справа налево. */
 .lock__fill {
   transform-origin: var(--edge-start);
@@ -1256,6 +1371,231 @@ main {
 
   35% {
     opacity: 0.9;
+  }
+}
+
+/* ── Главная: переезд телефона ─────────────────────────────────────── */
+
+/*
+  С 880 px, если браузер умеет анимации от прокрутки, телефон героя один
+  ведёт по главам. Он стоит рядом с текстом, на переходе между главами
+  переезжает на другую сторону, поворачиваясь и чуть отдаляясь, а экран в
+  нём меняется на экран следующей главы. Телефоны глав остаются невидимыми
+  местами, куда он приезжает. Прокрутка вверх проигрывает всё назад.
+
+  Отрезки прокрутки и сдвиги меряет скрипт TOUR (build.py) и кладёт в
+  переменные .tour: --r1…--r4 — границы отрезков, --ty — на сколько
+  телефон опустится за весь путь, --dx2, --dx3 — сдвиг вбок до мест шагов
+  и плиток. Класс is-touring ставится, только когда всё измерено; без него —
+  статичная вёрстка: три телефона на своих местах.
+
+  Вниз телефон едет линейно вровень с прокруткой и потому стоит в окне на
+  месте. Вбок — с паузами и разгоном. У одного translate одна кривая,
+  поэтому вниз едет .hero__visual, вбок — его ребёнок .tour__fly.
+
+  animation-timeline и animation-range — после шортката animation: он
+  сбрасывает их, и анимация пошла бы по времени.
+*/
+@media screen and (min-width: 880px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .tour.is-touring .hero__visual {
+      animation: tour-y linear both;
+      animation-timeline: scroll(root);
+      animation-range: var(--r1) var(--r4);
+    }
+
+    .tour.is-touring .tour__fly {
+      animation:
+        tour-x2 var(--ease-in-out) both,
+        tour-turn-2 var(--ease-in-out) both,
+        tour-x3 var(--ease-in-out) forwards,
+        tour-turn-3 var(--ease-in-out) forwards;
+      animation-timeline: scroll(root), scroll(root), scroll(root), scroll(root);
+      animation-range:
+        var(--r1) var(--r2),
+        var(--r1) var(--r2),
+        var(--r2) var(--r3),
+        var(--r2) var(--r3);
+    }
+
+    /* Экраны глав лежат стопкой поверх «Серии» и проявляются на середине
+       перехода. Капля Dynamic Island в разметке после них — остаётся сверху. */
+    .tour.is-touring .phone__shot--2,
+    .tour.is-touring .phone__shot--3 {
+      display: block;
+      position: absolute;
+      inset: 0;
+      animation: tour-shot linear both;
+      animation-timeline: scroll(root);
+    }
+
+    .tour.is-touring .phone__shot--2 {
+      animation-range: var(--r1) var(--r2);
+    }
+
+    .tour.is-touring .phone__shot--3 {
+      animation-range: var(--r2) var(--r3);
+    }
+
+    /* Текст уступает дорогу: телефон проезжает через его колонку. */
+    .tour.is-touring .hero__text {
+      animation: tour-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: var(--r1) var(--r2);
+    }
+
+    .tour.is-touring .flow .chapter__body {
+      animation:
+        tour-in linear both,
+        tour-out linear forwards;
+      animation-timeline: scroll(root), scroll(root);
+      animation-range:
+        var(--r1) var(--r2),
+        var(--r2) var(--r3);
+    }
+
+    .tour.is-touring .loops .chapter__body {
+      animation: tour-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: var(--r2) var(--r3);
+    }
+
+    .tour.is-touring .chapter__visual {
+      visibility: hidden;
+    }
+  }
+}
+
+/* Начало от-кадра — статика: translate none. */
+@keyframes tour-y {
+  to {
+    translate: 0 var(--ty);
+  }
+}
+
+@keyframes tour-x2 {
+  0%,
+  25% {
+    translate: 0 0;
+  }
+
+  65%,
+  100% {
+    translate: var(--dx2) 0;
+  }
+}
+
+@keyframes tour-x3 {
+  0%,
+  25% {
+    translate: var(--dx2) 0;
+  }
+
+  65%,
+  100% {
+    translate: var(--dx3) 0;
+  }
+}
+
+/* Передний по ходу край уходит назад. perspective() — в каждом кадре:
+   переход от perspective() к none браузеры интерполируют по-разному. */
+@keyframes tour-turn-2 {
+  0%,
+  25%,
+  65%,
+  100% {
+    transform: perspective(1400px) rotateY(0deg) scale(1);
+  }
+
+  45% {
+    transform: perspective(1400px) rotateY(calc(-14deg * var(--dir))) scale(0.92);
+  }
+}
+
+@keyframes tour-turn-3 {
+  0%,
+  25%,
+  65%,
+  100% {
+    transform: perspective(1400px) rotateY(0deg) scale(1);
+  }
+
+  45% {
+    transform: perspective(1400px) rotateY(calc(14deg * var(--dir))) scale(0.92);
+  }
+}
+
+/* Новый экран проявляется на середине переезда. Размытие в 2 px прячет
+   мгновение, когда видны оба экрана сразу. */
+@keyframes tour-shot {
+  0%,
+  40% {
+    opacity: 0;
+    filter: blur(2px);
+  }
+
+  55%,
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes tour-out {
+  0%,
+  10% {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  40%,
+  100% {
+    opacity: 0;
+    translate: 0 -24px;
+  }
+}
+
+@keyframes tour-in {
+  0%,
+  55% {
+    opacity: 0;
+    translate: 0 24px;
+  }
+
+  80%,
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* На узком экране сбоку места нет: телефоны глав встают из наклона, пока
+   их прокручивают в кадр, и ложатся обратно при прокрутке вверх. Шкала —
+   место телефона (.chapter__visual), а не сам телефон: его собственный
+   transform сдвигал бы точку отсчёта. */
+@media screen and (max-width: 879px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .has-motion .chapter__visual {
+      view-timeline: --chapter block;
+    }
+
+    .has-motion .chapter__visual .phone {
+      transform-origin: 50% 100%;
+      animation: phone-scrub linear both;
+      animation-timeline: --chapter;
+      animation-range: entry 10% cover 45%;
+    }
+  }
+}
+
+@keyframes phone-scrub {
+  from {
+    opacity: 0;
+    transform: perspective(1400px) translateY(10%) rotateX(24deg) scale(0.9);
+  }
+
+  to {
+    transform: perspective(1400px) rotateX(0deg) scale(1);
   }
 }
 
