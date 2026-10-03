@@ -652,12 +652,16 @@ main {
   gap: 28px;
 }
 
+/* align-content: start — шаги в ряду растягиваются до самого высокого, и без
+   него лишняя высота делилась бы между значком и текстом: заголовки коротких
+   шагов съезжали бы ниже, чем у длинного. */
 .flow__step {
   position: relative;
   display: grid;
   grid-template-columns: 48px minmax(0, 1fr);
   gap: 16px;
   align-items: start;
+  align-content: start;
 }
 
 .flow__node {
@@ -754,6 +758,7 @@ main {
 
 .bento {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
 }
 
@@ -768,11 +773,13 @@ main {
   border-radius: var(--radius-card);
 }
 
+/* Высота углубления одна на все плитки ряда: иначе плитка с коротким
+   текстом получала бы углубление выше, и заголовки соседей стояли бы на
+   разной высоте. Разница в длине текста уходит вниз плитки. */
 .tile__well {
-  flex: 1;
   display: grid;
   place-items: center;
-  min-height: 168px;
+  height: 184px;
   padding: 28px 16px;
   border-radius: 12px;
   background: rgb(0 0 0 / 0.42);
@@ -780,6 +787,7 @@ main {
 }
 
 .tile__body {
+  flex: 1;
   padding: 18px 14px 14px;
 }
 
@@ -817,9 +825,29 @@ main {
   height: 20px;
 }
 
+/* На экране 320 px полоса «2:30 AM — 6:30 AM» не помещалась в плитку. */
+@media (max-width: 359px) {
+  .tile__well {
+    padding-inline: 12px;
+  }
+
+  .chip {
+    gap: 6px;
+    padding-inline: 8px 10px;
+    font-size: 15px;
+  }
+
+  .chip svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 /* Первый звонок и три повтора через минуту — столбик, связанный линией.
    Снизу — тот же восход, что за телефоном в герое. */
 .tile--wide .tile__well {
+  height: auto;
+  min-height: 236px;
   background:
     radial-gradient(70% 90% at 50% 125%, rgb(255 159 10 / 0.24), rgb(255 159 10 / 0) 70%),
     rgb(0 0 0 / 0.42);
@@ -930,7 +958,6 @@ main {
 
   .tile--wide .tile__well {
     grid-area: well;
-    min-height: 236px;
   }
 
   .tile--wide .tile__body {
