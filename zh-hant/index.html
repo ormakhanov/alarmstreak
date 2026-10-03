@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://ormakhanov.github.io/alarmstreak/zh-hant/">
   <script>
     (function (w) {
-      if (w.IntersectionObserver && w.CSS && w.CSS.registerProperty) {
+      if (w.IntersectionObserver) {
         w.document.documentElement.classList.add("has-motion");
       }
     })(window);
@@ -81,29 +81,12 @@
       </p>
       <div class="hero__visual">
         <div class="hero__glow" aria-hidden="true"></div>
-        <figure class="morning">
-          <div class="morning__screen" aria-hidden="true">
-            <div class="morning__top">
-              <span class="morning__alarm"><svg class="morning__bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg>6:30</span>
-              <span class="morning__mission"><svg class="morning__check" viewBox="0 0 24 24"><path pathLength="1" d="m5.5 12.5 4 4 9-9"/></svg>深蹲 <bdi class="morning__reps"><span class="morning__n"></span>/10</bdi></span>
-            </div>
-            <div class="morning__ring">
-              <svg class="morning__dial" viewBox="0 0 120 120" stroke-width="8"><path class="morning__track" d="M67.24 8.51A52 52 0 0 1 84.41 14.09M96.12 22.59A52 52 0 0 1 106.74 37.2M111.21 50.97A52 52 0 0 1 111.21 69.03M106.74 82.8A52 52 0 0 1 96.12 97.41M84.41 105.91A52 52 0 0 1 67.24 111.49M52.76 111.49A52 52 0 0 1 35.59 105.91M23.88 97.41A52 52 0 0 1 13.26 82.8M8.79 69.03A52 52 0 0 1 8.79 50.97M13.26 37.2A52 52 0 0 1 23.88 22.59M35.59 14.09A52 52 0 0 1 52.76 8.51"/><path class="morning__seg" style="--i:0" d="M67.24 8.51A52 52 0 0 1 84.41 14.09"/><path class="morning__seg" style="--i:1" d="M96.12 22.59A52 52 0 0 1 106.74 37.2"/><path class="morning__seg" style="--i:2" d="M111.21 50.97A52 52 0 0 1 111.21 69.03"/><path class="morning__seg" style="--i:3" d="M106.74 82.8A52 52 0 0 1 96.12 97.41"/><path class="morning__seg" style="--i:4" d="M84.41 105.91A52 52 0 0 1 67.24 111.49"/><path class="morning__seg" style="--i:5" d="M52.76 111.49A52 52 0 0 1 35.59 105.91"/><path class="morning__seg" style="--i:6" d="M23.88 97.41A52 52 0 0 1 13.26 82.8"/><path class="morning__seg" style="--i:7" d="M8.79 69.03A52 52 0 0 1 8.79 50.97"/><path class="morning__seg" style="--i:8" d="M13.26 37.2A52 52 0 0 1 23.88 22.59"/><path class="morning__seg" style="--i:9" d="M35.59 14.09A52 52 0 0 1 52.76 8.51"/></svg>
-              <span class="morning__count"><span class="morning__old">11</span><span class="morning__new">12</span></span>
-            </div>
-            <p class="morning__unit">連續早上</p>
-            <ol class="morning__week">
-              <li class="morning__day"><span class="morning__cell"></span><span>一</span></li>
-              <li class="morning__day"><span class="morning__cell"></span><span>二</span></li>
-              <li class="morning__day"><span class="morning__cell"></span><span>三</span></li>
-              <li class="morning__day"><span class="morning__cell"></span><span>四</span></li>
-              <li class="morning__day"><span class="morning__cell"></span><span>五</span></li>
-              <li class="morning__day"><span class="morning__cell morning__cell--pause"></span><span>六</span></li>
-              <li class="morning__day morning__day--today"><span class="morning__cell morning__cell--today"></span><span>日</span></li>
-            </ol>
+        <div class="phone">
+          <div class="phone__screen">
+            <img src="../assets/screens/zh-hant.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak 的「連勝」頁面：連續早起天數、最佳紀錄、徽章和活動。">
+            <span class="phone__island" aria-hidden="true"></span>
           </div>
-          <figcaption class="morning__note">範例：鬧鐘 6:30 響起，6:38 前完成 10 下深蹲。早上計入，連勝從 11 增加到 12。週六處於暫停狀態，沒有中斷連勝。</figcaption>
-        </figure>
+        </div>
       </div>
       <script>
         (function (d) {
@@ -112,7 +95,7 @@
           try {
             new IntersectionObserver(function (entries) {
               var e = entries[entries.length - 1];
-              // на низком окне (зум, альбомный телефон) треть карточки не видна никогда
+              // на низком окне (зум, альбомный телефон) треть телефона не видна никогда
               var need = Math.min(0.34, 0.5 * window.innerHeight / box.offsetHeight);
               if (e.isIntersecting && e.intersectionRatio >= need) box.classList.add("is-playing");
               box.classList.toggle("is-glowing", e.isIntersecting);

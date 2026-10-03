@@ -195,7 +195,7 @@ img {
 
 /* ── Главная: hero ─────────────────────────────────────────────────── */
 
-/* Свечение за карточкой шире экрана телефона. clip, а не hidden: hidden
+/* Свечение за телефоном шире экрана. clip, а не hidden: hidden
    превращает overflow-y в auto, и main стал бы прокручиваемым блоком. */
 main {
   overflow-x: clip;
@@ -208,7 +208,7 @@ main {
 }
 
 /* Порядок в разметке — порядок на телефоне. С 880 px grid переносит
-   карточку в правую колонку на всю высоту, текст встаёт по её центру. */
+   телефон в правую колонку на всю высоту, текст встаёт по его центру. */
 .hero {
   max-width: 1080px;
   margin: 0 auto;
@@ -280,10 +280,8 @@ main {
   margin: 48px auto 16px;
 }
 
-/* Восход за карточкой. Плотная середина спрятана за непрозрачной карточкой,
-   видна только кайма. Это тот же акцент с прозрачностью — нового цвета нет;
-   под краем карточки прозрачность не выше 0,14, и вторичный текст рядом
-   держит контраст выше 5,9:1. */
+/* Восход за телефоном: плотная середина спрятана за корпусом, по краям
+   видна кайма. Это тот же акцент с прозрачностью — нового цвета нет. */
 .hero__glow {
   position: absolute;
   z-index: -1;
@@ -302,211 +300,95 @@ main {
   pointer-events: none;
 }
 
-/* Карточка «утро» — иллюстрация, а не данные: будильник прозвенел, десять
-   приседаний засчитаны, серия выросла. Повторяет главный экран приложения,
-   где серия — самый крупный элемент. */
-.morning {
-  margin: 0;
-  background: var(--card);
-  border-radius: 28px;
-  padding: 22px 22px 24px;
-}
-
-.morning__top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px 12px;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.morning__alarm,
-.morning__mission {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.morning__mission {
-  color: var(--text-secondary);
-}
-
-.morning__top svg {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Колокольчик качается вокруг верхушки. */
-.morning__bell {
-  transform-origin: 50% 20%;
-}
-
-.morning__top .morning__check {
-  stroke-width: 2.4;
-}
-
-.morning__check path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-}
-
-.morning__reps {
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
-/* Место под две цифры: иначе на переходе 9 → 10 «/10» сдвинулось бы.
-   Число рисует счётчик CSS — его анимирует блок движения ниже. */
-.morning__n {
-  display: inline-block;
-  min-inline-size: 2ch;
-  text-align: end;
-}
-
-.morning__n::after {
-  --reps: 10;
-  counter-reset: reps var(--reps);
-  content: counter(reps);
-}
-
-.morning[data-digits="beng"] .morning__n::after {
-  content: counter(reps, bengali);
-}
-
-/* Кольцо — десять повторений; не зеркалится в RTL: прогресс по часовой
-   стрелке понятен везде. Размеры в rem — растут с крупным шрифтом. */
-.morning__ring {
-  display: grid;
-  place-items: center;
-  width: 9.5rem;
-  margin: 20px auto 6px;
-}
-
-.morning__ring > * {
-  grid-area: 1 / 1;
-}
-
-.morning__dial {
-  width: 100%;
-  height: auto;
-  fill: none;
-  stroke-linecap: round;
-}
-
-.morning__track {
-  stroke: var(--raised);
-}
-
-.morning__seg {
-  stroke: var(--accent);
-}
-
-/* «11» и «12» лежат в одной ячейке: смена числа не сдвигает вёрстку. */
-.morning__count {
-  display: grid;
-  overflow: hidden;
-  color: var(--accent);
-  font-size: 3.25rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-}
-
-.morning__count > span {
-  grid-area: 1 / 1;
-  text-align: center;
-}
-
-.morning__old {
-  opacity: 0;
-  transform: translateY(-70%);
-}
-
-.morning__unit {
-  margin: 0;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 600;
-}
-
-.morning__week {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  margin: 22px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.morning__day {
-  display: grid;
-  gap: 6px;
-  justify-items: center;
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.morning__day--today {
-  color: var(--text);
-  font-weight: 700;
-}
-
-/* Форма несёт смысл наравне с цветом, как в приложении: победа — залитый
-   квадрат, пауза — полоса, сегодняшнее утро — контур, который заливается. */
-.morning__cell {
+/* Телефон с настоящим экраном приложения — скриншот вкладки «Серия» с
+   симулятора, свой для каждого языка. Корпус нарисован стилями, а не взят
+   из рамок Apple: их изображения нельзя наклонять и анимировать (правила
+   App Store Marketing), а здесь телефон поднимается с наклоном.
+   Пропорции iPhone 17 Pro: экран 402 × 874 pt, рамка по 16 pt — корпус
+   434 × 906, скругления экрана 62 pt, корпуса 78 pt. Проценты у padding
+   считаются от ширины, у border-radius — от своей стороны: отсюда пары. */
+.phone {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  background: var(--accent);
+  width: min(300px, 76vw);
+  margin: 0 auto;
+  aspect-ratio: 434 / 906;
+  padding: 3.69%;
+  border-radius: 17.97% / 8.61%;
+  background: #050506;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.06),
+    0 0 0 1.5px #48484a,
+    0 0 0 3px #2c2c2e;
 }
 
-.morning__cell--pause {
-  background: var(--raised);
-}
-
-.morning__cell--pause::after {
+/* Кнопки на торцах. Слева — Action и громкость, справа — боковая и
+   Camera Control; места — доли высоты корпуса. Физические left/right:
+   в RTL телефон не зеркалится. */
+.phone::before,
+.phone::after {
   content: "";
   position: absolute;
-  left: 20%;
-  right: 20%;
-  top: 50%;
-  height: 3px;
-  margin-top: -1.5px;
-  border-radius: 2px;
-  background: var(--text-secondary);
+  width: 3px;
+  border-radius: 1.5px;
 }
 
-.morning__cell--today {
-  background: transparent;
-  box-shadow: inset 0 0 0 2px var(--accent);
+.phone::before {
+  left: -6px;
+  top: 17%;
+  height: 22%;
+  background: linear-gradient(to bottom,
+      #3a3a3c 0 18%, transparent 18% 36%,
+      #3a3a3c 36% 64%, transparent 64% 73%,
+      #3a3a3c 73% 100%);
 }
 
-.morning__cell--today::before {
+.phone::after {
+  right: -6px;
+  top: 27%;
+  height: 35%;
+  background: linear-gradient(to bottom,
+      #3a3a3c 0 28.6%, transparent 28.6% 80%,
+      #3a3a3c 80% 100%);
+}
+
+/* isolation — чтобы Safari не терял скругление углов, пока у корпуса
+   идёт 3D-трансформация. */
+.phone__screen {
+  position: relative;
+  isolation: isolate;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15.42% / 7.09%;
+  background: #000;
+}
+
+.phone__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dynamic Island: 126 × 37 pt, 11 pt от верха экрана. */
+.phone__island {
+  position: absolute;
+  top: 1.26%;
+  left: 50%;
+  width: 31.3%;
+  height: 4.23%;
+  translate: -50% 0;
+  border-radius: 999px;
+  background: #000;
+}
+
+/* Заслонка «спящего» экрана. В финальном кадре её нет — анимация
+   screen-wake только описывает путь от тёмного экрана к светлому. */
+.phone__screen::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  background: var(--accent);
-}
-
-.morning__note {
-  margin: 18px 0 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--raised);
-  color: var(--text-secondary);
-  font-size: 15px;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Отрицательный трекинг рвёт связки арабского письма и деванагари,
@@ -538,8 +420,8 @@ main {
   }
 }
 
-/* В одной колонке круг шириной 150% почти целиком прячется за карточкой —
-   вытягиваем его в эллипс по высоте карточки, чтобы ореол был виден сверху
+/* В одной колонке круг шириной 150% почти целиком прячется за телефоном —
+   вытягиваем его в эллипс по высоте телефона, чтобы ореол был виден сверху
    и снизу. */
 @media (max-width: 879px) {
   .hero__glow {
@@ -588,56 +470,16 @@ main {
     margin: 0;
   }
 
-  .morning {
-    padding: 28px;
-  }
-
-  .morning__ring {
-    width: 11rem;
-  }
-
-  .morning__count {
-    font-size: 3.75rem;
+  .phone {
+    width: clamp(240px, 33vh, 300px);
   }
 }
 
-@media (prefers-contrast: more) {
-  .morning__track {
-    stroke: rgb(255 255 255 / 0.36);
-  }
-}
-
-/* В режиме высокой контрастности фоны и тени сбрасываются — клетки недели
-   слились бы с карточкой. Системные цвета, заданные явно, сохраняются. */
+/* В режиме высокой контрастности фоны и тени сбрасываются — у корпуса
+   пропала бы граница. Системные цвета, заданные явно, сохраняются. */
 @media (forced-colors: active) {
-  .morning {
-    border: 1px solid CanvasText;
-  }
-
-  .morning__seg {
-    stroke: Highlight;
-  }
-
-  .morning__track {
-    stroke: GrayText;
-  }
-
-  .morning__cell,
-  .morning__cell--today::before {
-    background: Highlight;
-  }
-
-  .morning__cell--pause {
-    background: Canvas;
-    border: 2px solid GrayText;
-  }
-
-  .morning__cell--pause::after {
-    background: GrayText;
-  }
-
-  .morning__cell--today {
-    border: 2px solid Highlight;
+  .phone {
+    border: 2px solid CanvasText;
   }
 
   .hero__glow {
@@ -661,22 +503,16 @@ main {
 
   Всё движение объявлено только при screen и no-preference: при «Уменьшить
   движение» и в печати анимаций нет вовсе. Гасить их через animation: none
-  ненадёжно — псевдоэлементы (счётчик, клетка «сегодня») двигались бы дальше.
+  ненадёжно — псевдоэлементы (заслонка экрана) двигались бы дальше.
 
-  Текст выплывает сразу при загрузке. Сцена в карточке ждёт, пока её увидят:
+  Текст выплывает сразу при загрузке. Сцена с телефоном ждёт, пока её увидят:
   класс has-motion (ворота в <head>, build.py) ставит её на паузу через
-  --play, скрипт после карточки снимает паузу классом is-playing, а
-  «дыхание» свечения идёт, пока карточка на экране (is-glowing). Пауза —
+  --play, скрипт после телефона снимает паузу классом is-playing, а
+  «дыхание» свечения идёт, пока телефон на экране (is-glowing). Пауза —
   переменной в каждом шорткате, а не правилом animation-play-state: так её
   не перебьёт более точный селектор и она доходит до псевдоэлементов.
-  Без JavaScript has-motion нет — карточка сразу в финальном кадре.
+  Без JavaScript has-motion нет — телефон сразу в финальном кадре.
 */
-
-@property --reps {
-  syntax: "<integer>";
-  inherits: false;
-  initial-value: 10;
-}
 
 @media screen and (prefers-reduced-motion: no-preference) {
   .hero__title,
@@ -696,6 +532,7 @@ main {
   .has-motion .hero__visual {
     --play: paused;
     --glow-play: paused;
+    perspective: 1400px;
   }
 
   .has-motion .hero__visual.is-playing {
@@ -713,45 +550,18 @@ main {
       glow-breathe 6000ms var(--ease-in-out) 3500ms infinite var(--glow-play);
   }
 
-  /* 2. Звонок */
-  .has-motion .morning__bell {
-    animation: bell-ring 800ms cubic-bezier(0.36, 0.07, 0.19, 0.97) 500ms backwards var(--play);
+  /* 2. Телефон берут со стола: он поднимается и выпрямляется, поворачиваясь
+     вокруг нижнего края. Без отскока — его ставят, а не бросают. */
+  .has-motion .phone {
+    transform-origin: 50% 100%;
+    animation: phone-rise 1100ms var(--ease-out) 100ms backwards var(--play);
   }
 
-  /* 3. Сегменты загораются по одному, раз в 150 мс */
-  .has-motion .morning__seg {
-    animation: fade-in 240ms var(--ease-out) calc(1100ms + var(--i) * 150ms) backwards var(--play);
-  }
-
-  /* 4. Счётчик 0 → 10: цифра k+1 появляется в 1220 + 150·k мс — на
-     середине проявления сегмента k. steps, а не linear: целое округляется и
-     съехало бы на полшага; end, а не start: «0» в задержке тогда не зависит
-     от тонкостей фазы before. */
-  .has-motion .morning__n::after {
-    animation: reps 1500ms steps(10, end) 1070ms backwards var(--play);
-  }
-
-  /* 5–6. Кольцо замкнулось: лёгкий пульс и галочка */
-  .has-motion .morning__dial {
-    animation: ring-pulse 500ms var(--ease-in-out) 2700ms backwards var(--play);
-  }
-
-  .has-motion .morning__check path {
-    animation: draw 360ms var(--ease-in-out) 2700ms backwards var(--play);
-  }
-
-  /* 7–8. Серия 11 → 12: старое число успевает уйти, пока новое въезжает */
-  .has-motion .morning__old {
-    animation: count-out 240ms cubic-bezier(0.4, 0, 1, 1) 2800ms backwards var(--play);
-  }
-
-  .has-motion .morning__new {
-    animation: count-in 560ms var(--ease-spring) 2890ms backwards var(--play);
-  }
-
-  /* 9. Сегодняшняя клетка заливается — взгляд идёт: кольцо → число → неделя */
-  .has-motion .morning__cell--today::before {
-    animation: cell-fill 500ms var(--ease-spring) 3050ms backwards var(--play);
+  /* 3. Экран загорается, пока телефон поднимают, — как «Поднятие для
+     активации» на iPhone. Иначе чёрный корпус с тёмным экраном на чёрном
+     фоне не видно, и подъём с наклоном проходит впустую. */
+  .has-motion .phone__screen::after {
+    animation: screen-wake 450ms var(--ease-out) 350ms backwards var(--play);
   }
 }
 
@@ -797,61 +607,24 @@ main {
   }
 }
 
-@keyframes fade-in {
+/* Начало подъёма: ниже, верх отклонён назад, чуть меньше. Не scale(0) и
+   не из пустоты: телефон уже есть, его поднимают. */
+@keyframes phone-rise {
   from {
     opacity: 0;
+    transform: translateY(10%) rotateX(16deg) scale(0.96);
   }
 }
 
-@keyframes reps {
-  from {
-    --reps: 0;
-  }
-}
-
-@keyframes ring-pulse {
-  50% {
-    transform: scale(1.04);
-  }
-}
-
-/* Скруглённый конец при полном смещении может оставить точку — поэтому
-   линия ещё и проявляется. */
-@keyframes draw {
-  from {
-    stroke-dashoffset: 1;
-    opacity: 0;
-  }
-
-  5% {
-    opacity: 1;
-  }
-}
-
-@keyframes count-out {
+@keyframes screen-wake {
   from {
     opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes count-in {
-  from {
-    opacity: 0;
-    transform: translateY(70%);
-  }
-}
-
-@keyframes cell-fill {
-  from {
-    opacity: 0;
-    transform: scale(0.2);
   }
 }
 
 /* ── Главная: шаги утра ────────────────────────────────────────────── */
 
-/* Контурные значки новых блоков рисуются так же, как в карточке. */
+/* Контурные значки блоков ниже героя: акцентный контур толщиной 2. */
 .flow__node svg,
 .chip svg,
 .privacy__icon svg {
@@ -1045,7 +818,7 @@ main {
 }
 
 /* Первый звонок и три повтора через минуту — столбик, связанный линией.
-   Снизу — тот же восход, что за карточкой в герое. */
+   Снизу — тот же восход, что за телефоном в герое. */
 .tile--wide .tile__well {
   background:
     radial-gradient(70% 90% at 50% 125%, rgb(255 159 10 / 0.24), rgb(255 159 10 / 0) 70%),
@@ -1358,7 +1131,7 @@ main {
   ставит скрипт в конце main (build.py, REVEAL). Внутри плиток схема
   проигрывает то, о чём текст: звонок повторяется, полоса закрепления
   заполняется, колокольчик звенит. Финальный кадр — статичные стили выше,
-  как и в карточке героя.
+  как и у телефона в герое.
 */
 
 @media screen and (prefers-reduced-motion: no-preference) {
