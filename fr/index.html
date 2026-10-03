@@ -3,15 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>AlarmStreak — l’alarme avec une mission</title>
-  <meta name="description" content="AlarmStreak est une alarme pour iPhone qui ne valide votre matin qu’après une mission : des squats devant la caméra, un calcul ou la photo d’un objet.">
+  <title>AlarmStreak — l’alarme iPhone qui vous met en mouvement</title>
+  <meta name="description" content="Une alarme iPhone qui ne valide votre matin qu’après une mission en 15 minutes : squats ou pompes devant la caméra, calculs ou photo d’un objet.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
   <meta property="og:title" content="AlarmStreak">
-  <meta property="og:description" content="L’alarme qui ne valide votre matin qu’après une mission.">
+  <meta property="og:description" content="Levez-vous à l’heure et commencez la journée en mouvement. Le matin n’est validé qu’après une mission.">
   <meta property="og:image" content="https://ormakhanov.github.io/alarmstreak/assets/icon.png">
   <meta property="og:url" content="https://ormakhanov.github.io/alarmstreak/fr/">
+  <script>
+    (function (w) {
+      if (w.IntersectionObserver && w.CSS && w.CSS.registerProperty) {
+        w.document.documentElement.classList.add("has-motion");
+      }
+    })(window);
+  </script>
   <link rel="canonical" href="https://ormakhanov.github.io/alarmstreak/fr/">
   <link rel="alternate" hreflang="de" href="https://ormakhanov.github.io/alarmstreak/de/">
   <link rel="alternate" hreflang="en" href="https://ormakhanov.github.io/alarmstreak/en/">
@@ -66,34 +73,70 @@
 
   <main>
     <section class="hero">
-      <div>
-        <img class="hero__icon" src="../assets/icon.png" alt="" width="96" height="96">
-        <h1>AlarmStreak</h1>
-        <p class="hero__lead">L’alarme qui valide votre matin <em>seulement après une mission</em></p>
-        <p class="hero__text">Faites 10 squats devant la caméra, résolvez un calcul ou photographiez un objet précis : votre matin est validé. Chaque matin validé prolonge votre série, jusqu’à ce que le lever devienne une habitude.</p>
-        <p class="soon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          <span>Bientôt sur l’App Store</span>
-        </p>
+      <p class="hero__eyebrow">L’alarme iPhone avec une mission</p>
+      <h1 class="hero__title">Se réveiller à l’heure. <em>Et réveiller son corps.</em></h1>
+      <p class="hero__lead">Le matin n’est validé qu’après une mission dans les 15 minutes qui suivent l’alarme : squats ou pompes comptés par la caméra, calculs ou photo d’un objet de la maison choisi au hasard.</p>
+      <p class="store">
+        <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
+        <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">Bientôt sur l’App Store</span></span>
+      </p>
+      <div class="hero__visual">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <figure class="morning">
+          <div class="morning__screen" aria-hidden="true">
+            <div class="morning__top">
+              <span class="morning__alarm"><svg class="morning__bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg>6:30</span>
+              <span class="morning__mission"><svg class="morning__check" viewBox="0 0 24 24"><path pathLength="1" d="m5.5 12.5 4 4 9-9"/></svg>Squats <bdi class="morning__reps"><span class="morning__n"></span>/10</bdi></span>
+            </div>
+            <div class="morning__ring">
+              <svg class="morning__dial" viewBox="0 0 120 120" stroke-width="8"><path class="morning__track" d="M67.24 8.51A52 52 0 0 1 84.41 14.09M96.12 22.59A52 52 0 0 1 106.74 37.2M111.21 50.97A52 52 0 0 1 111.21 69.03M106.74 82.8A52 52 0 0 1 96.12 97.41M84.41 105.91A52 52 0 0 1 67.24 111.49M52.76 111.49A52 52 0 0 1 35.59 105.91M23.88 97.41A52 52 0 0 1 13.26 82.8M8.79 69.03A52 52 0 0 1 8.79 50.97M13.26 37.2A52 52 0 0 1 23.88 22.59M35.59 14.09A52 52 0 0 1 52.76 8.51"/><path class="morning__seg" style="--i:0" d="M67.24 8.51A52 52 0 0 1 84.41 14.09"/><path class="morning__seg" style="--i:1" d="M96.12 22.59A52 52 0 0 1 106.74 37.2"/><path class="morning__seg" style="--i:2" d="M111.21 50.97A52 52 0 0 1 111.21 69.03"/><path class="morning__seg" style="--i:3" d="M106.74 82.8A52 52 0 0 1 96.12 97.41"/><path class="morning__seg" style="--i:4" d="M84.41 105.91A52 52 0 0 1 67.24 111.49"/><path class="morning__seg" style="--i:5" d="M52.76 111.49A52 52 0 0 1 35.59 105.91"/><path class="morning__seg" style="--i:6" d="M23.88 97.41A52 52 0 0 1 13.26 82.8"/><path class="morning__seg" style="--i:7" d="M8.79 69.03A52 52 0 0 1 8.79 50.97"/><path class="morning__seg" style="--i:8" d="M13.26 37.2A52 52 0 0 1 23.88 22.59"/><path class="morning__seg" style="--i:9" d="M35.59 14.09A52 52 0 0 1 52.76 8.51"/></svg>
+              <span class="morning__count"><span class="morning__old">11</span><span class="morning__new">12</span></span>
+            </div>
+            <p class="morning__unit">matins d’affilée</p>
+            <ol class="morning__week">
+              <li class="morning__day"><span class="morning__cell"></span><span>L</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>M</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>M</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>J</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>V</span></li>
+              <li class="morning__day"><span class="morning__cell morning__cell--pause"></span><span>S</span></li>
+              <li class="morning__day morning__day--today"><span class="morning__cell morning__cell--today"></span><span>D</span></li>
+            </ol>
+          </div>
+          <figcaption class="morning__note">Exemple : l’alarme a sonné à 6 h 30, 10 squats étaient faits à 6 h 38 — le matin est validé et la série passe à 12. Le samedi était en pause et ne l’a pas interrompue.</figcaption>
+        </figure>
       </div>
-
-      <figure class="streak">
-        <p class="streak__label">Série</p>
-        <div class="streak__value">
-          <span class="streak__number">12</span>
-          <span class="streak__unit">matins d’affilée</span>
-        </div>
-        <ol class="streak__week" aria-hidden="true">
-          <li class="streak__day"><span class="streak__cell"></span><span>L</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>M</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>M</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>J</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>V</span></li>
-          <li class="streak__day"><span class="streak__cell streak__cell--pause"></span><span>S</span></li>
-          <li class="streak__day"><span class="streak__cell streak__cell--today"></span><span>D</span></li>
-        </ol>
-        <figcaption class="streak__note">Exemple : cinq matins validés, le samedi en pause sans briser la série, et le matin du dimanche encore à venir.</figcaption>
-      </figure>
+      <script>
+        (function (d) {
+          var box = d.querySelector(".hero__visual");
+          if (!box || !d.documentElement.classList.contains("has-motion")) return;
+          try {
+            new IntersectionObserver(function (entries) {
+              var e = entries[entries.length - 1];
+              // на низком окне (зум, альбомный телефон) треть карточки не видна никогда
+              var need = Math.min(0.34, 0.5 * window.innerHeight / box.offsetHeight);
+              if (e.isIntersecting && e.intersectionRatio >= need) box.classList.add("is-playing");
+              box.classList.toggle("is-glowing", e.isIntersecting);
+            }, { threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35] }).observe(box);
+          } catch (err) {
+            box.classList.add("is-playing", "is-glowing");
+          }
+        })(document);
+      </script>
+      <ul class="hero__points" role="list">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg>
+          <p><strong>Debout à l’heure.</strong> L’alarme sonne même en mode silencieux et en Ne pas déranger.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg>
+          <p><strong>La gym du matin, incluse.</strong> 10 squats ou pompes : la caméra les compte directement sur votre téléphone.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg>
+          <p><strong>Une série à ne pas perdre.</strong> Chaque matin validé l’allonge d’un jour. Vacances ou maladie ? Mettez-la en pause.</p>
+        </li>
+      </ul>
     </section>
 
     <section class="features" aria-label="Fonctionnalités">
@@ -102,7 +145,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>
         </div>
         <h2>Impossible de tricher</h2>
-        <p>Vous pouvez couper l’alarme, mais le matin n’est validé que si vous accomplissez la mission dans les 15 minutes. La caméra compte vos squats, le calcul doit être résolu, l’objet doit être trouvé.</p>
+        <p>Vous pouvez couper l’alarme, mais le matin n’est validé que si vous accomplissez la mission dans les 15 minutes. La caméra compte vos squats ou vos pompes, le calcul doit être résolu, l’objet doit être trouvé.</p>
       </article>
 
       <article class="feature">

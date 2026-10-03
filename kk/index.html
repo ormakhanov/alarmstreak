@@ -3,15 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>AlarmStreak — тапсырмасы бар оятқыш</title>
-  <meta name="description" content="AlarmStreak — iPhone-ға арналған оятқыш: таң тек тапсырмадан кейін есептеледі — камера алдында отырып-тұру, есеп немесе заттың суреті.">
+  <title>AlarmStreak — таңғы жаттығуы бар iPhone оятқышы</title>
+  <meta name="description" content="Таңды 15 минут ішінде орындалған тапсырмадан кейін ғана есептейтін iPhone оятқышы: камера алдында отырып-тұру не жерден итерілу, есеп шығару немесе заттың суреті.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#000000">
   <meta property="og:type" content="website">
   <meta property="og:title" content="AlarmStreak">
-  <meta property="og:description" content="Таңды тек тапсырмадан кейін есептейтін оятқыш.">
+  <meta property="og:description" content="Уақытылы тұрып, күнді қозғалыспен бастаңыз. Таң тек тапсырмадан кейін есептеледі.">
   <meta property="og:image" content="https://ormakhanov.github.io/alarmstreak/assets/icon.png">
   <meta property="og:url" content="https://ormakhanov.github.io/alarmstreak/kk/">
+  <script>
+    (function (w) {
+      if (w.IntersectionObserver && w.CSS && w.CSS.registerProperty) {
+        w.document.documentElement.classList.add("has-motion");
+      }
+    })(window);
+  </script>
   <link rel="canonical" href="https://ormakhanov.github.io/alarmstreak/kk/">
   <link rel="alternate" hreflang="de" href="https://ormakhanov.github.io/alarmstreak/de/">
   <link rel="alternate" hreflang="en" href="https://ormakhanov.github.io/alarmstreak/en/">
@@ -66,34 +73,70 @@
 
   <main>
     <section class="hero">
-      <div>
-        <img class="hero__icon" src="../assets/icon.png" alt="" width="96" height="96">
-        <h1>AlarmStreak</h1>
-        <p class="hero__lead">Таңды <em>тек тапсырмадан кейін</em> есептейтін оятқыш</p>
-        <p class="hero__text">Камера алдында 10 рет отырып-тұрыңыз, есеп шығарыңыз немесе керекті затты суретке түсіріңіз — таң есептелді. Әр осындай таң серияны ұзартады, ал ерте тұру әдетке айналады.</p>
-        <p class="soon">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-          <span>Жақында App Store-да</span>
-        </p>
+      <p class="hero__eyebrow">Тапсырмасы бар iPhone оятқышы</p>
+      <h1 class="hero__title">Уақытылы ояну. <em>Денені де ояту.</em></h1>
+      <p class="hero__lead">Таң оятқыш шырылдағаннан кейін 15 минут ішінде тапсырма орындалса ғана есептеледі: камера санайтын отырып-тұру не жерден итерілу, есептер немесе үйдегі кездейсоқ заттың суреті.</p>
+      <p class="store">
+        <img src="../assets/apple-touch-icon.png" alt="" width="44" height="44">
+        <span><strong class="store__name">AlarmStreak</strong> <span class="store__soon">Жақында App Store-да</span></span>
+      </p>
+      <div class="hero__visual">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <figure class="morning">
+          <div class="morning__screen" aria-hidden="true">
+            <div class="morning__top">
+              <span class="morning__alarm"><svg class="morning__bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg>6:30</span>
+              <span class="morning__mission"><svg class="morning__check" viewBox="0 0 24 24"><path pathLength="1" d="m5.5 12.5 4 4 9-9"/></svg>Отырып-тұру <bdi class="morning__reps"><span class="morning__n"></span>/10</bdi></span>
+            </div>
+            <div class="morning__ring">
+              <svg class="morning__dial" viewBox="0 0 120 120" stroke-width="8"><path class="morning__track" d="M67.24 8.51A52 52 0 0 1 84.41 14.09M96.12 22.59A52 52 0 0 1 106.74 37.2M111.21 50.97A52 52 0 0 1 111.21 69.03M106.74 82.8A52 52 0 0 1 96.12 97.41M84.41 105.91A52 52 0 0 1 67.24 111.49M52.76 111.49A52 52 0 0 1 35.59 105.91M23.88 97.41A52 52 0 0 1 13.26 82.8M8.79 69.03A52 52 0 0 1 8.79 50.97M13.26 37.2A52 52 0 0 1 23.88 22.59M35.59 14.09A52 52 0 0 1 52.76 8.51"/><path class="morning__seg" style="--i:0" d="M67.24 8.51A52 52 0 0 1 84.41 14.09"/><path class="morning__seg" style="--i:1" d="M96.12 22.59A52 52 0 0 1 106.74 37.2"/><path class="morning__seg" style="--i:2" d="M111.21 50.97A52 52 0 0 1 111.21 69.03"/><path class="morning__seg" style="--i:3" d="M106.74 82.8A52 52 0 0 1 96.12 97.41"/><path class="morning__seg" style="--i:4" d="M84.41 105.91A52 52 0 0 1 67.24 111.49"/><path class="morning__seg" style="--i:5" d="M52.76 111.49A52 52 0 0 1 35.59 105.91"/><path class="morning__seg" style="--i:6" d="M23.88 97.41A52 52 0 0 1 13.26 82.8"/><path class="morning__seg" style="--i:7" d="M8.79 69.03A52 52 0 0 1 8.79 50.97"/><path class="morning__seg" style="--i:8" d="M13.26 37.2A52 52 0 0 1 23.88 22.59"/><path class="morning__seg" style="--i:9" d="M35.59 14.09A52 52 0 0 1 52.76 8.51"/></svg>
+              <span class="morning__count"><span class="morning__old">11</span><span class="morning__new">12</span></span>
+            </div>
+            <p class="morning__unit">қатарынан таң</p>
+            <ol class="morning__week">
+              <li class="morning__day"><span class="morning__cell"></span><span>Дс</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>Сс</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>Ср</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>Бс</span></li>
+              <li class="morning__day"><span class="morning__cell"></span><span>Жм</span></li>
+              <li class="morning__day"><span class="morning__cell morning__cell--pause"></span><span>Сб</span></li>
+              <li class="morning__day morning__day--today"><span class="morning__cell morning__cell--today"></span><span>Жс</span></li>
+            </ol>
+          </div>
+          <figcaption class="morning__note">Мысал: оятқыш 6:30-да шырылдады, 6:38-ге дейін 10 рет отырып-тұру орындалды — таң есептелді, серия 12-ге жетті. Сенбі үзілісте болды және серияны үзген жоқ.</figcaption>
+        </figure>
       </div>
-
-      <figure class="streak">
-        <p class="streak__label">Серия</p>
-        <div class="streak__value">
-          <span class="streak__number">12</span>
-          <span class="streak__unit">таң қатарынан</span>
-        </div>
-        <ol class="streak__week" aria-hidden="true">
-          <li class="streak__day"><span class="streak__cell"></span><span>Дс</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>Сс</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>Ср</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>Бс</span></li>
-          <li class="streak__day"><span class="streak__cell"></span><span>Жм</span></li>
-          <li class="streak__day"><span class="streak__cell streak__cell--pause"></span><span>Сб</span></li>
-          <li class="streak__day"><span class="streak__cell streak__cell--today"></span><span>Жс</span></li>
-        </ol>
-        <figcaption class="streak__note">Экран мысалы: бес таң есептелді, сенбі үзілісте және серияны үзбейді, жексенбі таңы алда.</figcaption>
-      </figure>
+      <script>
+        (function (d) {
+          var box = d.querySelector(".hero__visual");
+          if (!box || !d.documentElement.classList.contains("has-motion")) return;
+          try {
+            new IntersectionObserver(function (entries) {
+              var e = entries[entries.length - 1];
+              // на низком окне (зум, альбомный телефон) треть карточки не видна никогда
+              var need = Math.min(0.34, 0.5 * window.innerHeight / box.offsetHeight);
+              if (e.isIntersecting && e.intersectionRatio >= need) box.classList.add("is-playing");
+              box.classList.toggle("is-glowing", e.isIntersecting);
+            }, { threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35] }).observe(box);
+          } catch (err) {
+            box.classList.add("is-playing", "is-glowing");
+          }
+        })(document);
+      </script>
+      <ul class="hero__points" role="list">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 4.5 3 6.5M19 4.5l2 2"/></svg>
+          <p><strong>Уақытында тұру.</strong> Дыбыссыз режимде де, «Мазаламау» қосулы кезде де шырылдайды.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7v10M17.5 7v10M3.5 10v4M20.5 10v4M6.5 12h11"/></svg>
+          <p><strong>Жаттығу — оянудың бөлігі.</strong> 10 рет отырып-тұру не жерден итерілу — камера оларды телефонның өзінде санайды.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.6 3.2 5 5.6 5 10.5a5 5 0 0 1-10 0c0-2.3 1.1-4 2.4-5.2.2 1.7 1.1 2.9 2.2 3.2-.3-3.2-.4-5.8.4-8.5z"/></svg>
+          <p><strong>Үзгіңіз келмейтін серия.</strong> Әр есептелген таң серияны ұзартады. Демалыс не ауру — үзіліс қойыңыз.</p>
+        </li>
+      </ul>
     </section>
 
     <section class="features" aria-label="Мүмкіндіктер">
@@ -102,7 +145,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>
         </div>
         <h2>Өзіңізді алдай алмайсыз</h2>
-        <p>Оятқышты өшіруге болады, бірақ таң қоңыраудан кейін 15 минут ішінде тапсырманы орындасаңыз ғана есептеледі. Отырып-тұруды камера санайды, есепті шығару, затты табу керек.</p>
+        <p>Оятқышты өшіруге болады, бірақ таң қоңыраудан кейін 15 минут ішінде тапсырманы орындасаңыз ғана есептеледі. Отырып-тұру мен жерден итерілуді камера санайды, есепті шығару, затты табу керек.</p>
       </article>
 
       <article class="feature">
@@ -125,7 +168,7 @@
         <div class="feature__icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg>
         </div>
-        <h2>Камера — тек телефонда</h2>
+        <h2>Камера — тек телефонда</h2>
         <p>Бейне мен суреттер тікелей телефонда өңделеді және ешқайда жіберілмейді. Тіркелу де, аналитика да жоқ.</p>
       </article>
     </section>

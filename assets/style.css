@@ -26,6 +26,12 @@
 
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
+
+  /* Кривые движения на главной: выход с долгим торможением, симметричная
+     и пружина с небольшим перелётом. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
 *,
@@ -180,70 +186,156 @@ img {
 
 /* ── Главная: hero ─────────────────────────────────────────────────── */
 
+/* Свечение за карточкой шире экрана телефона. clip, а не hidden: hidden
+   превращает overflow-y в auto, и main стал бы прокручиваемым блоком. */
+main {
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  main {
+    overflow-x: hidden;
+  }
+}
+
+/* Порядок в разметке — порядок на телефоне. С 880 px grid переносит
+   карточку в правую колонку на всю высоту, текст встаёт по её центру. */
 .hero {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 56px var(--gutter) 40px;
-  display: grid;
-  gap: 40px;
-  align-items: center;
+  padding: 32px var(--gutter) 48px;
 }
 
-.hero__icon {
-  width: 96px;
-  height: 96px;
-  border-radius: var(--radius-icon);
-  box-shadow: 0 0 0 1px var(--raised), 0 18px 60px rgba(255, 159, 10, 0.18);
-  margin-bottom: 28px;
-}
-
-.hero h1 {
+.hero__eyebrow {
   margin: 0 0 12px;
-  font-size: clamp(40px, 9vw, 64px);
-  line-height: 1.05;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hero__title {
+  margin: 0 0 16px;
+  font-size: clamp(34px, 3vw + 24px, 56px);
+  line-height: 1.08;
   letter-spacing: -0.02em;
   font-weight: 800;
+  text-wrap: balance;
 }
 
-.hero__lead {
-  margin: 0 0 16px;
-  font-size: clamp(22px, 4.6vw, 30px);
-  line-height: 1.25;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  max-width: 22ch;
-}
-
-.hero__lead em {
+/* Вторая фраза — с новой строки и акцентом. Без курсива: синтетический
+   наклон портит китайский и арабское письмо. */
+.hero__title em {
+  display: block;
   font-style: normal;
   color: var(--accent);
 }
 
-.hero__text {
-  margin: 0 0 28px;
+.hero__lead {
+  margin: 0 0 24px;
+  max-width: 34em;
   color: var(--text-secondary);
   font-size: 18px;
-  max-width: 34em;
+  line-height: 1.5;
+  text-wrap: pretty;
 }
 
-.soon {
+/* «Скоро в App Store» — подпись, а не кнопка: без рамки и фона, чтобы не
+   обещать нажатия. Когда приложение выйдет, здесь встанет значок App Store. */
+.store {
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.store img {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-icon);
+  box-shadow: 0 0 0 1px var(--raised);
+}
+
+.store__name,
+.store__soon {
+  display: block;
+}
+
+.store__name {
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.store__soon {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.hero__visual {
+  position: relative;
+  max-width: 400px;
+  margin: 48px auto 36px;
+}
+
+/* Восход за карточкой. Плотная середина спрятана за непрозрачной карточкой,
+   видна только кайма. Это тот же акцент с прозрачностью — нового цвета нет;
+   под краем карточки прозрачность не выше 0,14, и вторичный текст рядом
+   держит контраст выше 5,9:1. */
+.hero__glow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side,
+      rgb(255 159 10 / 0.42),
+      rgb(255 159 10 / 0.32) 40%,
+      rgb(255 159 10 / 0.16) 62%,
+      rgb(255 159 10 / 0.05) 82%,
+      rgb(255 159 10 / 0));
+  pointer-events: none;
+}
+
+/* Карточка «утро» — иллюстрация, а не данные: будильник прозвенел, десять
+   приседаний засчитаны, серия выросла. Повторяет главный экран приложения,
+   где серия — самый крупный элемент. */
+.morning {
+  margin: 0;
+  background: var(--card);
+  border-radius: 28px;
+  padding: 22px 22px 24px;
+}
+
+.morning__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.morning__alarm,
+.morning__mission {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  border-radius: 999px;
-  border: 1px solid var(--separator);
-  background: var(--card);
-  color: var(--text);
-  font-weight: 600;
-  font-size: 16px;
+  gap: 6px;
 }
 
-.soon svg {
+.morning__mission {
+  color: var(--text-secondary);
+}
+
+.morning__top svg {
+  flex: none;
   width: 18px;
   height: 18px;
-  flex: none;
   fill: none;
   stroke: var(--accent);
   stroke-width: 2;
@@ -251,58 +343,110 @@ img {
   stroke-linejoin: round;
 }
 
-/* Карточка серии — иллюстрация, а не данные: повторяет главный экран
-   приложения, где серия — самый крупный элемент. */
-.streak {
-  margin: 0;
-  background: var(--card);
-  border-radius: 28px;
-  padding: 28px;
-  max-width: 380px;
-  width: 100%;
-  justify-self: center;
+/* Колокольчик качается вокруг верхушки. */
+.morning__bell {
+  transform-origin: 50% 20%;
 }
 
-.streak__label {
-  color: var(--text-secondary);
-  font-size: 15px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin: 0;
+.morning__top .morning__check {
+  stroke-width: 2.4;
 }
 
-.streak__value {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin: 6px 0 22px;
+.morning__check path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
 }
 
-.streak__number {
-  font-size: 88px;
-  line-height: 1;
-  font-weight: 800;
-  color: var(--accent);
+.morning__reps {
+  color: var(--text);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.03em;
 }
 
-.streak__unit {
-  font-size: 20px;
+/* Место под две цифры: иначе на переходе 9 → 10 «/10» сдвинулось бы.
+   Число рисует счётчик CSS — его анимирует блок движения ниже. */
+.morning__n {
+  display: inline-block;
+  min-inline-size: 2ch;
+  text-align: end;
+}
+
+.morning__n::after {
+  --reps: 10;
+  counter-reset: reps var(--reps);
+  content: counter(reps);
+}
+
+.morning[data-digits="beng"] .morning__n::after {
+  content: counter(reps, bengali);
+}
+
+/* Кольцо — десять повторений; не зеркалится в RTL: прогресс по часовой
+   стрелке понятен везде. Размеры в rem — растут с крупным шрифтом. */
+.morning__ring {
+  display: grid;
+  place-items: center;
+  width: 9.5rem;
+  margin: 20px auto 6px;
+}
+
+.morning__ring > * {
+  grid-area: 1 / 1;
+}
+
+.morning__dial {
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.morning__track {
+  stroke: var(--raised);
+}
+
+.morning__seg {
+  stroke: var(--accent);
+}
+
+/* «11» и «12» лежат в одной ячейке: смена числа не сдвигает вёрстку. */
+.morning__count {
+  display: grid;
+  overflow: hidden;
+  color: var(--accent);
+  font-size: 3.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.morning__count > span {
+  grid-area: 1 / 1;
+  text-align: center;
+}
+
+.morning__old {
+  opacity: 0;
+  transform: translateY(-70%);
+}
+
+.morning__unit {
+  margin: 0;
+  text-align: center;
+  font-size: 17px;
   font-weight: 600;
 }
 
-.streak__week {
+.morning__week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;
-  margin: 0;
+  margin: 22px 0 0;
   padding: 0;
   list-style: none;
 }
 
-.streak__day {
+.morning__day {
   display: grid;
   gap: 6px;
   justify-items: center;
@@ -311,21 +455,26 @@ img {
   font-weight: 600;
 }
 
+.morning__day--today {
+  color: var(--text);
+  font-weight: 700;
+}
+
 /* Форма несёт смысл наравне с цветом, как в приложении: победа — залитый
-   квадрат, пауза — полоса, сегодняшнее утро впереди — контур. */
-.streak__cell {
+   квадрат, пауза — полоса, сегодняшнее утро — контур, который заливается. */
+.morning__cell {
+  position: relative;
   width: 100%;
   aspect-ratio: 1;
   border-radius: 8px;
   background: var(--accent);
 }
 
-.streak__cell--pause {
+.morning__cell--pause {
   background: var(--raised);
-  position: relative;
 }
 
-.streak__cell--pause::after {
+.morning__cell--pause::after {
   content: "";
   position: absolute;
   left: 20%;
@@ -337,12 +486,20 @@ img {
   background: var(--text-secondary);
 }
 
-.streak__cell--today {
+.morning__cell--today {
   background: transparent;
   box-shadow: inset 0 0 0 2px var(--accent);
 }
 
-.streak__note {
+.morning__cell--today::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.morning__note {
   margin: 18px 0 0;
   padding-top: 16px;
   border-top: 1px solid var(--raised);
@@ -350,11 +507,418 @@ img {
   font-size: 15px;
 }
 
+.hero__points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.hero__points li {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.hero__points svg {
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--card);
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero__points p {
+  margin: 0;
+  padding-top: 5px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.hero__points strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Отрицательный трекинг рвёт связки арабского письма и деванагари,
+   китайским иероглифам он не нужен. У высоких начертаний — больше воздуха. */
+[dir="rtl"] .hero__title,
+:lang(hi) .hero__title,
+:lang(bn) .hero__title,
+:lang(zh) .hero__title {
+  letter-spacing: normal;
+}
+
+[dir="rtl"] .hero__title {
+  line-height: 1.3;
+}
+
+:lang(hi) .hero__title,
+:lang(bn) .hero__title {
+  line-height: 1.3;
+}
+
+:lang(ur) .hero__title {
+  line-height: 1.6;
+}
+
+:lang(ur) .hero__lead,
+:lang(ur) .hero__points p {
+  line-height: 1.9;
+}
+
+@media (min-width: 640px) {
+  .hero__lead {
+    font-size: 20px;
+  }
+}
+
+/* В одной колонке круг шириной 150% почти целиком прячется за карточкой —
+   вытягиваем его в эллипс по высоте карточки, чтобы ореол был виден сверху
+   и снизу. */
+@media (max-width: 879px) {
+  .hero__glow {
+    aspect-ratio: auto;
+    height: 150%;
+  }
+}
+
 @media (min-width: 880px) {
   .hero {
-    grid-template-columns: 1.25fr 1fr;
-    padding-top: 96px;
-    padding-bottom: 72px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-rows: 1fr repeat(5, auto) 1fr;
+    grid-template-areas:
+      ".       visual"
+      "eyebrow visual"
+      "title   visual"
+      "lead    visual"
+      "store   visual"
+      "points  visual"
+      ".       visual";
+    column-gap: 64px;
+    padding-top: 88px;
+    padding-bottom: 80px;
+  }
+
+  .hero__eyebrow {
+    grid-area: eyebrow;
+  }
+
+  /* Колонка текста при 880 px — около 420 px: кегль от ширины окна дал бы
+     там четыре-пять строк заголовка. Здесь он ≈ 0,09 ширины колонки — на
+     всех языках не больше трёх строк. */
+  .hero__title {
+    grid-area: title;
+    font-size: clamp(38px, 4.9vw - 4px, 48px);
+  }
+
+  .hero__lead {
+    grid-area: lead;
+  }
+
+  .store {
+    grid-area: store;
+  }
+
+  .hero__points {
+    grid-area: points;
+    margin-top: 40px;
+  }
+
+  .hero__visual {
+    grid-area: visual;
+    align-self: center;
+    justify-self: end;
+    width: 100%;
+    margin: 0;
+  }
+
+  .morning {
+    padding: 28px;
+  }
+
+  .morning__ring {
+    width: 11rem;
+  }
+
+  .morning__count {
+    font-size: 3.75rem;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .morning__track {
+    stroke: rgb(255 255 255 / 0.36);
+  }
+}
+
+/* В режиме высокой контрастности фоны и тени сбрасываются — клетки недели
+   слились бы с карточкой. Системные цвета, заданные явно, сохраняются. */
+@media (forced-colors: active) {
+  .morning {
+    border: 1px solid CanvasText;
+  }
+
+  .morning__seg {
+    stroke: Highlight;
+  }
+
+  .morning__track {
+    stroke: GrayText;
+  }
+
+  .morning__cell,
+  .morning__cell--today::before {
+    background: Highlight;
+  }
+
+  .morning__cell--pause {
+    background: Canvas;
+    border: 2px solid GrayText;
+  }
+
+  .morning__cell--pause::after {
+    background: GrayText;
+  }
+
+  .morning__cell--today {
+    border: 2px solid Highlight;
+  }
+
+  .hero__glow {
+    display: none;
+  }
+}
+
+@media print {
+  .hero__glow {
+    display: none;
+  }
+}
+
+/* ── Главная: движение ─────────────────────────────────────────────── */
+
+/*
+  Статичные стили выше — это финальный кадр. Анимации только описывают путь
+  к нему: ключевые кадры задают начальное состояние, конечное берётся из
+  статики (backwards держит начальное на время задержки), поэтому в конце
+  ничего не прыгает.
+
+  Всё движение объявлено только при screen и no-preference: при «Уменьшить
+  движение» и в печати анимаций нет вовсе. Гасить их через animation: none
+  ненадёжно — псевдоэлементы (счётчик, клетка «сегодня») двигались бы дальше.
+
+  Текст выплывает сразу при загрузке. Сцена в карточке ждёт, пока её увидят:
+  класс has-motion (ворота в <head>, build.py) ставит её на паузу через
+  --play, скрипт после карточки снимает паузу классом is-playing, а
+  «дыхание» свечения идёт, пока карточка на экране (is-glowing). Пауза —
+  переменной в каждом шорткате, а не правилом animation-play-state: так её
+  не перебьёт более точный селектор и она доходит до псевдоэлементов.
+  Без JavaScript has-motion нет — карточка сразу в финальном кадре.
+*/
+
+@property --reps {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 10;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .hero__eyebrow,
+  .hero__title,
+  .hero__lead,
+  .store,
+  .hero__points li {
+    animation: rise-in 600ms var(--ease-out) backwards;
+  }
+
+  .hero__title {
+    animation-delay: 80ms;
+  }
+
+  .hero__lead {
+    animation-delay: 160ms;
+  }
+
+  .store {
+    animation-delay: 240ms;
+  }
+
+  .hero__points li:nth-child(1) {
+    animation-delay: 320ms;
+  }
+
+  .hero__points li:nth-child(2) {
+    animation-delay: 400ms;
+  }
+
+  .hero__points li:nth-child(3) {
+    animation-delay: 480ms;
+  }
+
+  .has-motion .hero__visual {
+    --play: paused;
+    --glow-play: paused;
+  }
+
+  .has-motion .hero__visual.is-playing {
+    --play: running;
+  }
+
+  .has-motion .hero__visual.is-playing.is-glowing {
+    --glow-play: running;
+  }
+
+  /* 1. Восход, затем медленное «дыхание» */
+  .has-motion .hero__glow {
+    animation:
+      glow-rise 1800ms var(--ease-out) 200ms backwards var(--play),
+      glow-breathe 6000ms var(--ease-in-out) 3500ms infinite var(--glow-play);
+  }
+
+  /* 2. Звонок */
+  .has-motion .morning__bell {
+    animation: bell-ring 800ms cubic-bezier(0.36, 0.07, 0.19, 0.97) 500ms backwards var(--play);
+  }
+
+  /* 3. Сегменты загораются по одному, раз в 150 мс */
+  .has-motion .morning__seg {
+    animation: fade-in 240ms var(--ease-out) calc(1100ms + var(--i) * 150ms) backwards var(--play);
+  }
+
+  /* 4. Счётчик 0 → 10: цифра k+1 появляется в 1220 + 150·k мс — на
+     середине проявления сегмента k. steps, а не linear: целое округляется и
+     съехало бы на полшага; end, а не start: «0» в задержке тогда не зависит
+     от тонкостей фазы before. */
+  .has-motion .morning__n::after {
+    animation: reps 1500ms steps(10, end) 1070ms backwards var(--play);
+  }
+
+  /* 5–6. Кольцо замкнулось: лёгкий пульс и галочка */
+  .has-motion .morning__dial {
+    animation: ring-pulse 500ms var(--ease-in-out) 2700ms backwards var(--play);
+  }
+
+  .has-motion .morning__check path {
+    animation: draw 360ms var(--ease-in-out) 2700ms backwards var(--play);
+  }
+
+  /* 7–8. Серия 11 → 12: старое число успевает уйти, пока новое въезжает */
+  .has-motion .morning__old {
+    animation: count-out 240ms cubic-bezier(0.4, 0, 1, 1) 2800ms backwards var(--play);
+  }
+
+  .has-motion .morning__new {
+    animation: count-in 560ms var(--ease-spring) 2890ms backwards var(--play);
+  }
+
+  /* 9. Сегодняшняя клетка заливается — взгляд идёт: кольцо → число → неделя */
+  .has-motion .morning__cell--today::before {
+    animation: cell-fill 500ms var(--ease-spring) 3050ms backwards var(--play);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes glow-rise {
+  from {
+    opacity: 0;
+    transform: translateY(30%) scale(0.85);
+  }
+}
+
+@keyframes glow-breathe {
+  50% {
+    opacity: 0.72;
+  }
+}
+
+@keyframes bell-ring {
+  15% {
+    transform: rotate(-14deg);
+  }
+
+  30% {
+    transform: rotate(12deg);
+  }
+
+  45% {
+    transform: rotate(-9deg);
+  }
+
+  60% {
+    transform: rotate(6deg);
+  }
+
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes reps {
+  from {
+    --reps: 0;
+  }
+}
+
+@keyframes ring-pulse {
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+/* Скруглённый конец при полном смещении может оставить точку — поэтому
+   линия ещё и проявляется. */
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+}
+
+@keyframes count-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes count-in {
+  from {
+    opacity: 0;
+    transform: translateY(70%);
+  }
+}
+
+@keyframes cell-fill {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
   }
 }
 
