@@ -582,8 +582,8 @@ main {
   }
 
   /* Перспектива — у прямого родителя телефона: без неё rotateX подъёма
-     выглядит плоским сжатием. Родитель теперь .tour__fly. */
-  .has-motion .tour__fly {
+     выглядит плоским сжатием. Родитель теперь .tour__leg. */
+  .has-motion .tour__leg {
     perspective: 1400px;
   }
 
@@ -1385,13 +1385,18 @@ main {
 
   Отрезки прокрутки и сдвиги меряет скрипт TOUR (build.py) и кладёт в
   переменные .tour: --r1…--r4 — границы отрезков, --ty — на сколько
-  телефон опустится за весь путь, --dx2, --dx3 — сдвиг вбок до мест шагов
-  и плиток. Класс is-touring ставится, только когда всё измерено; без него —
-  статичная вёрстка: три телефона на своих местах.
+  телефон опустится за весь путь, --dx2 — сдвиг вбок от героя до шагов,
+  --dx3 — от шагов до плиток. Класс is-touring ставится, только когда всё
+  измерено; без него — статичная вёрстка: три телефона на своих местах.
 
   Вниз телефон едет линейно вровень с прокруткой и потому стоит в окне на
   месте. Вбок — с паузами и разгоном. У одного translate одна кривая,
-  поэтому вниз едет .hero__visual, вбок — его ребёнок .tour__fly.
+  поэтому вниз едет .hero__visual, вбок — его потомки.
+
+  Каждый переезд вбок — на своём элементе: первый на .tour__fly, второй на
+  .tour__leg внутри него, сдвиги складываются. Не две анимации одного
+  свойства на одном элементе: Safari 27, пока верхняя из них не началась,
+  не проигрывает и нижнюю — первый переезд стоял на месте, а второй шёл.
 
   animation-timeline и animation-range — после шортката animation: он
   сбрасывает их, и анимация пошла бы по времени.
@@ -1404,18 +1409,22 @@ main {
       animation-range: var(--r1) var(--r4);
     }
 
+    /* Отдельными свойствами: кривая — переменная, а её в шорткате
+       подставляют уже после каскада, и браузеры обходятся с этим по-разному. */
     .tour.is-touring .tour__fly {
-      animation:
-        tour-x2 var(--ease-in-out) both,
-        tour-turn-2 var(--ease-in-out) both,
-        tour-x3 var(--ease-in-out) forwards,
-        tour-turn-3 var(--ease-in-out) forwards;
-      animation-timeline: scroll(root), scroll(root), scroll(root), scroll(root);
-      animation-range:
-        var(--r1) var(--r2),
-        var(--r1) var(--r2),
-        var(--r2) var(--r3),
-        var(--r2) var(--r3);
+      animation-name: tour-x2, tour-turn-2;
+      animation-timing-function: var(--ease-in-out);
+      animation-fill-mode: both;
+      animation-timeline: scroll(root), scroll(root);
+      animation-range: var(--r1) var(--r2), var(--r1) var(--r2);
+    }
+
+    .tour.is-touring .tour__leg {
+      animation-name: tour-x3, tour-turn-3;
+      animation-timing-function: var(--ease-in-out);
+      animation-fill-mode: both;
+      animation-timeline: scroll(root), scroll(root);
+      animation-range: var(--r2) var(--r3), var(--r2) var(--r3);
     }
 
     /* Экраны глав лежат стопкой поверх «Серии» и проявляются на середине
@@ -1444,14 +1453,18 @@ main {
       animation-range: var(--r1) var(--r2);
     }
 
+    /* Шаги проявляются и гаснут на разных элементах — по той же причине,
+       что и два переезда телефона. */
     .tour.is-touring .flow .chapter__body {
-      animation:
-        tour-in linear both,
-        tour-out linear forwards;
-      animation-timeline: scroll(root), scroll(root);
-      animation-range:
-        var(--r1) var(--r2),
-        var(--r2) var(--r3);
+      animation: tour-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: var(--r1) var(--r2);
+    }
+
+    .tour.is-touring .flow .flow__steps {
+      animation: tour-out linear both;
+      animation-timeline: scroll(root);
+      animation-range: var(--r2) var(--r3);
     }
 
     .tour.is-touring .loops .chapter__body {
@@ -1463,6 +1476,14 @@ main {
     .tour.is-touring .chapter__visual {
       visibility: hidden;
     }
+
+    /* Разбег: перед каждой главой — пустая сцена в 70 % окна, на ней телефон
+       и переезжает. Без неё переезд занимал около 280 px прокрутки и при
+       быстрой прокрутке проскакивал незаметно. Только в режиме переезда:
+       без него пустота между главами ни к чему. */
+    .tour.is-touring .chapter {
+      margin-top: 70vh;
+    }
   }
 }
 
@@ -1473,96 +1494,104 @@ main {
   }
 }
 
+/* Доли — от перехода между главами, вместе с разбегом. Телефон стоит до
+   20 %, едет с 20 до 85 %: при быстрой прокрутке переезд всё ещё виден. */
 @keyframes tour-x2 {
   0%,
-  25% {
+  20% {
     translate: 0 0;
   }
 
-  65%,
+  85%,
   100% {
     translate: var(--dx2) 0;
   }
 }
 
+/* Второй переезд — на .tour__leg, поверх уже сдвинутого .tour__fly:
+   отсчёт от места шагов. */
 @keyframes tour-x3 {
   0%,
-  25% {
-    translate: var(--dx2) 0;
+  20% {
+    translate: 0 0;
   }
 
-  65%,
+  85%,
   100% {
     translate: var(--dx3) 0;
   }
 }
 
-/* Передний по ходу край уходит назад. perspective() — в каждом кадре:
-   переход от perspective() к none браузеры интерполируют по-разному. */
+/* Передний по ходу край уходит назад, сильнее всего — на середине пути.
+   perspective() — в каждом кадре: переход от perspective() к none браузеры
+   интерполируют по-разному. */
 @keyframes tour-turn-2 {
   0%,
-  25%,
-  65%,
+  20%,
+  85%,
   100% {
     transform: perspective(1400px) rotateY(0deg) scale(1);
   }
 
-  45% {
+  52.5% {
     transform: perspective(1400px) rotateY(calc(-14deg * var(--dir))) scale(0.92);
   }
 }
 
 @keyframes tour-turn-3 {
   0%,
-  25%,
-  65%,
+  20%,
+  85%,
   100% {
     transform: perspective(1400px) rotateY(0deg) scale(1);
   }
 
-  45% {
+  52.5% {
     transform: perspective(1400px) rotateY(calc(14deg * var(--dir))) scale(0.92);
   }
 }
 
-/* Новый экран проявляется на середине переезда. Размытие в 2 px прячет
-   мгновение, когда видны оба экрана сразу. */
+/* Новый экран проявляется на середине пути, коротко: чем дольше видны оба
+   экрана сразу, тем заметнее двойное изображение. Размытие его прячет. */
 @keyframes tour-shot {
   0%,
-  40% {
+  48% {
     opacity: 0;
-    filter: blur(2px);
+    filter: blur(4px);
   }
 
-  55%,
+  57%,
   100% {
     opacity: 1;
     filter: blur(0);
   }
 }
 
+/* Уходящий текст гаснет, пока телефон ещё стоит, — к его выезду колонка
+   пуста. */
 @keyframes tour-out {
   0%,
-  10% {
+  5% {
     opacity: 1;
     translate: 0 0;
   }
 
-  40%,
+  30%,
   100% {
     opacity: 0;
     translate: 0 -24px;
   }
 }
 
+/* Приходящий текст проявляется, когда телефон уже почти на месте. */
 @keyframes tour-in {
   0%,
-  55% {
+  75% {
     opacity: 0;
     translate: 0 24px;
   }
 
-  80%,
+  95%,
   100% {
     opacity: 1;
     translate: 0 0;

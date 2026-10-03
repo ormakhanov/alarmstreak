@@ -84,13 +84,15 @@
       </div>
       <div class="hero__visual">
         <div class="tour__fly">
-          <div class="hero__glow" aria-hidden="true"></div>
-          <div class="phone">
-            <div class="phone__screen">
-              <img class="phone__shot" src="../assets/screens/bn.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak-এর “স্ট্রিক” স্ক্রিন: টানা সকাল, রেকর্ড, ব্যাজ আর কার্যকলাপ।">
-              <img class="phone__shot phone__shot--2" src="../assets/screens/bn-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-এর “সকালের মিশন বেছে নিন” স্ক্রিন: স্কোয়াট, পুশ-আপ, অঙ্ক বা জিনিসের ছবি।">
-              <img class="phone__shot phone__shot--3" src="../assets/screens/bn-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-এর “অ্যালার্ম” ট্যাব: অ্যালার্মের সময়, মিশন আর চালু-বন্ধের সুইচ।">
-              <span class="phone__island" aria-hidden="true"></span>
+          <div class="tour__leg">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="phone">
+              <div class="phone__screen">
+                <img class="phone__shot" src="../assets/screens/bn.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak-এর “স্ট্রিক” স্ক্রিন: টানা সকাল, রেকর্ড, ব্যাজ আর কার্যকলাপ।">
+                <img class="phone__shot phone__shot--2" src="../assets/screens/bn-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-এর “সকালের মিশন বেছে নিন” স্ক্রিন: স্কোয়াট, পুশ-আপ, অঙ্ক বা জিনিসের ছবি।">
+                <img class="phone__shot phone__shot--3" src="../assets/screens/bn-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak-এর “অ্যালার্ম” ট্যাব: অ্যালার্মের সময়, মিশন আর চালু-বন্ধের সুইচ।">
+                <span class="phone__island" aria-hidden="true"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -261,6 +263,9 @@
         function measure() {
           queued = false;
           if (!wide.matches || !calm.matches) return off();
+          // с классом между главами появляется разбег — меряем уже с ним;
+          // до конца функции браузер ничего не рисует
+          tour.classList.add("is-touring");
           var vh = w.innerHeight;
           var top = tour.getBoundingClientRect().top + w.pageYOffset;
           var h = hero.offsetHeight;
@@ -282,8 +287,7 @@
           st.setProperty("--r4", px(r4));
           st.setProperty("--ty", px(r4 - r1));
           st.setProperty("--dx2", px(p2.x - p1.x));
-          st.setProperty("--dx3", px(p3.x - p1.x));
-          tour.classList.add("is-touring");
+          st.setProperty("--dx3", px(p3.x - p2.x));
         }
 
         function queue() {

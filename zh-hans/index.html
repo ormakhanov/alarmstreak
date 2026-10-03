@@ -84,13 +84,15 @@
       </div>
       <div class="hero__visual">
         <div class="tour__fly">
-          <div class="hero__glow" aria-hidden="true"></div>
-          <div class="phone">
-            <div class="phone__screen">
-              <img class="phone__shot" src="../assets/screens/zh-hans.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak 的“连胜”页面：连续早起天数、最佳纪录、徽章和活动。">
-              <img class="phone__shot phone__shot--2" src="../assets/screens/zh-hans-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的“选择早晨任务”页面：深蹲、俯卧撑、算术或物品照片。">
-              <img class="phone__shot phone__shot--3" src="../assets/screens/zh-hans-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的“闹钟”标签页：闹钟时间、任务和开关。">
-              <span class="phone__island" aria-hidden="true"></span>
+          <div class="tour__leg">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="phone">
+              <div class="phone__screen">
+                <img class="phone__shot" src="../assets/screens/zh-hans.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak 的“连胜”页面：连续早起天数、最佳纪录、徽章和活动。">
+                <img class="phone__shot phone__shot--2" src="../assets/screens/zh-hans-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的“选择早晨任务”页面：深蹲、俯卧撑、算术或物品照片。">
+                <img class="phone__shot phone__shot--3" src="../assets/screens/zh-hans-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak 的“闹钟”标签页：闹钟时间、任务和开关。">
+                <span class="phone__island" aria-hidden="true"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -261,6 +263,9 @@
         function measure() {
           queued = false;
           if (!wide.matches || !calm.matches) return off();
+          // с классом между главами появляется разбег — меряем уже с ним;
+          // до конца функции браузер ничего не рисует
+          tour.classList.add("is-touring");
           var vh = w.innerHeight;
           var top = tour.getBoundingClientRect().top + w.pageYOffset;
           var h = hero.offsetHeight;
@@ -282,8 +287,7 @@
           st.setProperty("--r4", px(r4));
           st.setProperty("--ty", px(r4 - r1));
           st.setProperty("--dx2", px(p2.x - p1.x));
-          st.setProperty("--dx3", px(p3.x - p1.x));
-          tour.classList.add("is-touring");
+          st.setProperty("--dx3", px(p3.x - p2.x));
         }
 
         function queue() {

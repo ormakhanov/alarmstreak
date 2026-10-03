@@ -84,13 +84,15 @@
       </div>
       <div class="hero__visual">
         <div class="tour__fly">
-          <div class="hero__glow" aria-hidden="true"></div>
-          <div class="phone">
-            <div class="phone__screen">
-              <img class="phone__shot" src="../assets/screens/hi.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak में “स्ट्रीक” स्क्रीन: लगातार सुबहें, रिकॉर्ड, बैज और गतिविधि।">
-              <img class="phone__shot phone__shot--2" src="../assets/screens/hi-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak में “सुबह का मिशन चुनें” स्क्रीन: स्क्वैट, पुश-अप, गणित या चीज़ की फ़ोटो।">
-              <img class="phone__shot phone__shot--3" src="../assets/screens/hi-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak में “अलार्म” टैब: अलार्म का समय, मिशन और चालू-बंद स्विच।">
-              <span class="phone__island" aria-hidden="true"></span>
+          <div class="tour__leg">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <div class="phone">
+              <div class="phone__screen">
+                <img class="phone__shot" src="../assets/screens/hi.jpg" width="402" height="874" fetchpriority="high" alt="AlarmStreak में “स्ट्रीक” स्क्रीन: लगातार सुबहें, रिकॉर्ड, बैज और गतिविधि।">
+                <img class="phone__shot phone__shot--2" src="../assets/screens/hi-mission.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak में “सुबह का मिशन चुनें” स्क्रीन: स्क्वैट, पुश-अप, गणित या चीज़ की फ़ोटो।">
+                <img class="phone__shot phone__shot--3" src="../assets/screens/hi-alarms.jpg" width="402" height="874" loading="lazy" alt="AlarmStreak में “अलार्म” टैब: अलार्म का समय, मिशन और चालू-बंद स्विच।">
+                <span class="phone__island" aria-hidden="true"></span>
+              </div>
             </div>
           </div>
         </div>
@@ -261,6 +263,9 @@
         function measure() {
           queued = false;
           if (!wide.matches || !calm.matches) return off();
+          // с классом между главами появляется разбег — меряем уже с ним;
+          // до конца функции браузер ничего не рисует
+          tour.classList.add("is-touring");
           var vh = w.innerHeight;
           var top = tour.getBoundingClientRect().top + w.pageYOffset;
           var h = hero.offsetHeight;
@@ -282,8 +287,7 @@
           st.setProperty("--r4", px(r4));
           st.setProperty("--ty", px(r4 - r1));
           st.setProperty("--dx2", px(p2.x - p1.x));
-          st.setProperty("--dx3", px(p3.x - p1.x));
-          tour.classList.add("is-touring");
+          st.setProperty("--dx3", px(p3.x - p2.x));
         }
 
         function queue() {
